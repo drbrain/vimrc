@@ -47,7 +47,9 @@ augroup cprog
   au FileType c,cpp  setlocal formatoptions=croql cindent comments=sr:/*,mb:*,el:*/,://
 augroup END
 
-au TermOpen * setlocal nonu nornu
+if has("nvim")
+  au TermOpen * setlocal nonu nornu
+endif
 
 au FocusGained,BufEnter * :checktime
 
