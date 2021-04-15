@@ -1,6 +1,7 @@
 source ~/.config/nvim/vundle.vim
 
 source ~/.config/nvim/appearance.vim
+source ~/.config/nvim/gui.vim
 source ~/.config/nvim/behavior.vim
 source ~/.config/nvim/autocmd.vim
 source ~/.config/nvim/cdpath.vim
