@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'dense-analysis/ale'
 
+Bundle 'bling/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'godlygeek/tabular'
 Plugin 'ludovicchabant/vim-gutentags'
