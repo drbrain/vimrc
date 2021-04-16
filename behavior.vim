@@ -26,6 +26,13 @@ if trim(tolower(v:progname)) == "vim"
   set maxmemtot=50000
 endif
 
+" Enable mouse use in all modes
+set mouse=a
+
+" Easy switching between tabs
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-h> :tabprev<CR>
+
 " terminal
 tnoremap <D-Esc> <C-\><C-n>
 

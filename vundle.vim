@@ -6,7 +6,10 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'airblade/vim-gitgutter'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'kien/ctrlp.vim'
+
 Plugin 'godlygeek/tabular'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'mileszs/ack.vim'
