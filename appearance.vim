@@ -1,7 +1,7 @@
-colorscheme drbrain
+" colorscheme drbrain
 
 set number
-set relativenumber
+" set relativenumber
 set numberwidth=3
 
 set visualbell
