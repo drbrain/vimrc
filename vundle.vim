@@ -2,6 +2,8 @@ set nocompatible
 filetype off
 
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+set rtp+=/opt/homebrew/opt/fzf
+
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
