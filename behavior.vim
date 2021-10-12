@@ -34,6 +34,13 @@ let g:ackprg = 'ag --vimgrep --smart-case'
 cnoreabbrev ag Ack
 nnoremap <Leader>a :Ack!<Space>
 
+" vim-easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " vim-dispatch
 "let g:dispatch_compilers = {}
 "let g:dispatch_compilers['devly'] = 'minitest'
