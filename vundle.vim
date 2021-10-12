@@ -8,6 +8,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Bundle 'bling/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'godlygeek/tabular'
 Plugin 'junegunn/vim-easy-align'
