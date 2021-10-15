@@ -7,6 +7,7 @@ set rtp+=/opt/homebrew/opt/fzf
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'dense-analysis/ale'
 
 Bundle 'bling/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
@@ -20,7 +21,6 @@ Plugin 'takac/vim-hardtime'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'vim-test/vim-test'
 
 call vundle#end()
