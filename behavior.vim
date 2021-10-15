@@ -53,16 +53,3 @@ nmap ga <Plug>(EasyAlign)
 
 " rust.vim
 let g:rustfmt_autosave = 1
-
-"ALE
-let g:ale_linters = {
-      \   'ruby': ['standardrb'],
-      \   'python': ['flake8', 'pylint'],
-      \   'javascript': ['eslint'],
-      \}
-let g:ale_fixers = {
-      \    'ruby': ['standardrb'],
-      \}
-let g:ale_fix_on_save = 1
-
-

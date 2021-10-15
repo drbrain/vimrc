@@ -2,6 +2,7 @@ source ~/.config/nvim/vundle.vim
 
 source ~/.config/nvim/appearance.vim
 source ~/.config/nvim/airline.vim
+source ~/.config/nvim/ale.vim
 source ~/.config/nvim/gui.vim
 source ~/.config/nvim/behavior.vim
 source ~/.config/nvim/autocmd.vim
