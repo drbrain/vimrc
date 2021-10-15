@@ -5,6 +5,8 @@ let g:airline#extensions#syntastic#enabled = 1
 
 let g:airline_detect_spell = 0
 
+let g:airline_section_x = '%{airline#util#prepend(airline#extensions#gutentags#status(),0)}'
+let g:airline_section_y = ''
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%#__restore__#%l/%L %#__accent_bold#%{g:airline_symbols.colnr}%#__restore__#%v %#__accent_bold#%{g:airline_symbols.charpos}%#__restore__#%o 0x%B'
 
 " powerline symbols
@@ -17,7 +19,7 @@ let g:airline_branch_prefix = ''
 let g:airline_symbols.branch = ''
 let g:airline_readonly_symbol = ''
 let g:airline_symbols.colnr = '℅'
-let g:airline_symbols.charpos = '¢'
+let g:airline_symbols.charpos = '⁁'
 let g:airline_symbols.readonly = ''
 let g:airline_linecolumn_prefix = ''
 let g:airline_symbols.linenr = ''

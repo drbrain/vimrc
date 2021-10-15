@@ -28,3 +28,4 @@ set showbreak="> "
 
 set diffopt=filler,context:8,foldcolumn:0
 
+let g:airline_theme='deus'

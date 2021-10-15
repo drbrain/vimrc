@@ -8,7 +8,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'bling/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'godlygeek/tabular'
 Plugin 'junegunn/vim-easy-align'
@@ -19,6 +18,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'takac/vim-hardtime'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-test/vim-test'
 
