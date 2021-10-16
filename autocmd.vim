@@ -40,7 +40,8 @@ au FileType help setlocal nospell
 "au BufRead,BufNew,BufEnter * call s:setup_ruby_trunk()
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
-au FileType rust   setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+" au FileType rust   setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+ au FileType rust   setlocal tags=./rusty-tags.vi;/
 
 au BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
