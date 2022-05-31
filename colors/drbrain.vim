@@ -16,6 +16,8 @@ endif
 
 let g:colors_name = "drbrain"
 
+hi PMenu ctermfg=Yellow ctermbg=Black guibg=#292C33
+
 hi Normal	guifg=White		guibg=Black
 hi Normal	ctermfg=White		ctermbg=Black
 
@@ -53,7 +55,8 @@ hi PreProc	guifg=SteelBlue1
 hi PreProc	ctermfg=67
 
 hi Special	term=bold
-hi Special	guifg=MediumVioletRed
+" brightened MediumVioletRed
+hi Special	guifg=#ff3fb5
 hi Special	ctermfg=Red
 
 hi Statement	term=bold	gui=bold

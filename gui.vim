@@ -2,7 +2,7 @@
 if !has("nvim")
   set antialias
 
-  set guifont=Hasklig\ Light:h11
+  set guifont=Hasklug_Light_Nerd_Font_Complete_Mono:h11
 endif
 
 set guioptions=acegir
