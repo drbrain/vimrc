@@ -1,4 +1,6 @@
-source ~/.config/nvim/vundle.vim
+set shell=/bin/bash
+
+source ~/.config/nvim/plug.vim
 
 source ~/.config/nvim/appearance.vim
 source ~/.config/nvim/airline.vim
@@ -16,4 +18,5 @@ source ~/.config/nvim/ruby-lang.vim
 source ~/.config/nvim/search.vim
 source ~/.config/nvim/spell.vim
 source ~/.config/nvim/terminal.vim
+source ~/.config/nvim/wilder.vim
 
