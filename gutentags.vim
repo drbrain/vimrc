@@ -1,5 +1,3 @@
-let g:gutentags_ctags_executable = system("which ctags | tr -d '\n'")
-
 " Setup gutentags to use rusty-tags
 if !exists("g:gutentags_project_info")
   let g:gutentags_project_info = []
