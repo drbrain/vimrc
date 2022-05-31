@@ -1,0 +1,1 @@
+highlight clear TabCharacters
