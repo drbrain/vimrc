@@ -16,3 +16,4 @@ let g:ale_fixers = {
       \ 'rust': ['rustfmt'],
       \}
 
+nmap <silent> <C-]> <Plug>(ale_go_to_definition)
