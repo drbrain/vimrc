@@ -55,6 +55,9 @@ augroup END
 
 if has("nvim")
   au TermOpen * setlocal nonu nornu
+
+  set updatetime=300
+  autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 endif
 
 au FocusGained,BufEnter * :checktime
