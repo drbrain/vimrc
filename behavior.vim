@@ -29,6 +29,9 @@ if trim(tolower(v:progname)) == "vim"
   set maxmemtot=50000
 endif
 
+" disable netrw
+let g:netrw_nogx = 1
+
 " terminal
 tnoremap <D-Esc> <C-\><C-n>
 
@@ -56,3 +59,5 @@ nmap ga <Plug>(EasyAlign)
 
 " rust.vim
 let g:rustfmt_autosave = 1
+
+
