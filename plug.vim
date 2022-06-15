@@ -8,6 +8,7 @@ set rtp+=/opt/homebrew/opt/fzf
 call plug#begin()
 
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'folke/trouble.nvim'
 Plug 'gelguy/wilder.nvim'
 Plug 'godlygeek/tabular'
 Plug 'hrsh7th/cmp-buffer'
