@@ -16,20 +16,27 @@ endif
 
 let g:colors_name = "drbrain"
 
-hi PMenu ctermfg=Yellow ctermbg=Black guibg=#292C33
+hi PMenu ctermfg=Yellow ctermbg=Black guibg=#151515
+hi PMenuSel guibg=#313131
 
-hi CmpItemAbbr guifg=#B2B2B2
-hi CmpItemAbbrMatch guifg=#CACACA
-hi CmpItemAbbrMatchFuzzy guifg=#CACACA
-hi CmpItemKind gui=bold guifg=Yellow
-hi CmpItemKindConstant gui=bold guifg=#6feeee
-hi CmpItemKindEnum gui=bold guifg=#6feeee
-hi CmpItemKindFunction gui=bold guifg=PaleGreen
-hi CmpItemKindModule guifg=#ff3fb5
-hi CmpItemKindStruct gui=bold guifg=#6feeee
-hi CmpItemKindText guifg=#878787
-hi CmpItemKindTypeParameter guifg=LightGreen
-hi CmpItemKindVariable gui=bold guifg=#CACACA
+hi CmpItemAbbr                       guifg=#CACACA
+hi CmpItemAbbrMatch                  guifg=#E6E6E6
+hi CmpItemAbbrMatchFuzzy             guifg=#E6E6E6
+hi CmpItemKind              gui=bold guifg=Yellow
+hi CmpItemKindConstant      gui=bold guifg=PaleGreen
+hi CmpItemKindEnum          gui=bold guifg=PaleGreen
+hi CmpItemKindFunction      gui=bold guifg=#ff3fb5
+hi CmpItemKindMethod        gui=bold guifg=#ff3fb5
+hi CmpItemKindModule        gui=bold guifg=SteelBlue1
+hi CmpItemKindStruct        gui=bold guifg=PaleGreen
+hi CmpItemKindText                   guifg=#878787
+hi CmpItemKindTypeParameter          guifg=LightGreen
+hi CmpItemKindVariable      gui=bold guifg=#CACACA
+hi CmpItemMenu                       guibg=#000000
+
+hi LineNr      gui=bold guifg=#FF7F82
+hi LineNrAbove guifg=#FFFD7F
+hi LineNrBelow guifg=#FFAA32
 
 hi Normal	guifg=White		guibg=Black
 hi Normal	ctermfg=White		ctermbg=Black
