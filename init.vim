@@ -20,5 +20,6 @@ source ~/.config/nvim/search.vim
 source ~/.config/nvim/trouble.lua
 source ~/.config/nvim/spell.vim
 source ~/.config/nvim/terminal.vim
+source ~/.config/nvim/web-devicons.lua
 source ~/.config/nvim/wilder.vim
 
