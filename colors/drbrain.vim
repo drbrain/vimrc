@@ -18,6 +18,19 @@ let g:colors_name = "drbrain"
 
 hi PMenu ctermfg=Yellow ctermbg=Black guibg=#292C33
 
+hi CmpItemAbbr guifg=#B2B2B2
+hi CmpItemAbbrMatch guifg=#CACACA
+hi CmpItemAbbrMatchFuzzy guifg=#CACACA
+hi CmpItemKind gui=bold guifg=Yellow
+hi CmpItemKindConstant gui=bold guifg=#6feeee
+hi CmpItemKindEnum gui=bold guifg=#6feeee
+hi CmpItemKindFunction gui=bold guifg=PaleGreen
+hi CmpItemKindModule guifg=#ff3fb5
+hi CmpItemKindStruct gui=bold guifg=#6feeee
+hi CmpItemKindText guifg=#878787
+hi CmpItemKindTypeParameter guifg=LightGreen
+hi CmpItemKindVariable gui=bold guifg=#CACACA
+
 hi Normal	guifg=White		guibg=Black
 hi Normal	ctermfg=White		ctermbg=Black
 
