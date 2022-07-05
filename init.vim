@@ -13,10 +13,12 @@ source ~/.config/nvim/gutentags.vim
 source ~/.config/nvim/highlight.vim
 source ~/.config/nvim/leader.vim
 source ~/.config/nvim/lsp.lua
+source ~/.config/nvim/nu.lua
 source ~/.config/nvim/ruby.vim
 source ~/.config/nvim/rust.lua
 "source ~/.config/nvim/ruby-lang.vim
 source ~/.config/nvim/search.vim
+source ~/.config/nvim/telescope.lua
 source ~/.config/nvim/trouble.lua
 source ~/.config/nvim/spell.vim
 source ~/.config/nvim/terminal.vim

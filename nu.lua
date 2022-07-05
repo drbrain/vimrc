@@ -1,0 +1,2 @@
+require('nu').setup{}
+
