@@ -13,6 +13,7 @@ source ~/.config/nvim/gutentags.vim
 source ~/.config/nvim/highlight.vim
 source ~/.config/nvim/leader.vim
 source ~/.config/nvim/lsp.lua
+source ~/.config/nvim/map.lua
 source ~/.config/nvim/nu.lua
 source ~/.config/nvim/ruby.vim
 source ~/.config/nvim/rust.lua
