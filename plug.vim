@@ -37,6 +37,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-test/vim-test'
+Plug 'xiyaowong/telescope-emoji.nvim'
 
 call plug#end()
 
