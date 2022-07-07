@@ -53,6 +53,19 @@ remap("n", "gi",        vim.lsp.buf.implementation,          bufopts)
 -- List references in quickfix
 remap("n", "gr",        vim.lsp.buf.references,              bufopts)
 
+-- Lspsaga
+--
+-- code action
+local action = require("lspsaga.codeaction")
+remap("n", "<leader>ca", action.code_action, silent)
+remap("v", "<leader>ca", function()
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
+    action.range_code_action()
+end, silent)
+-- rename
+remap("n", "<leader>lr", require("lspsaga.rename").lsp_rename, silent)
+
+
 -- Telescope
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
 remap("n", "<leader>fb", require('telescope.builtin').buffers, nil)
