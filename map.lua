@@ -52,3 +52,12 @@ remap("n", "gd",        vim.lsp.buf.definition,              bufopts)
 remap("n", "gi",        vim.lsp.buf.implementation,          bufopts)
 -- List references in quickfix
 remap("n", "gr",        vim.lsp.buf.references,              bufopts)
+
+-- Telescope
+-- https://github.com/nvim-telescope/telescope.nvim#pickers
+remap("n", "<leader>fb", require('telescope.builtin').buffers, nil)
+remap("n", "<leader>ff", require('telescope.builtin').find_files, nil)
+remap("n", "<leader>fg", require('telescope.builtin').live_grep, nil)
+remap("n", "<leader>fh", require('telescope.builtin').help_tags, nil)
+remap("n", "<leader>fi", require('telescope.builtin').lsp_incoming_calls, nil)
+remap("n", "<leader>fo", require('telescope.builtin').lsp_outgoing_calls, nil)
