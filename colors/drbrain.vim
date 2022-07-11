@@ -16,9 +16,6 @@ endif
 
 let g:colors_name = "drbrain"
 
-hi PMenu ctermfg=Yellow ctermbg=Black guibg=#151515
-hi PMenuSel guibg=#313131
-
 hi CmpItemAbbr                       guifg=#CACACA
 hi CmpItemAbbrMatch                  guifg=#E6E6E6
 hi CmpItemAbbrMatchFuzzy             guifg=#E6E6E6
@@ -38,6 +35,12 @@ hi LineNr      gui=bold guifg=#FF7F82
 hi LineNrAbove guifg=#FFFD7F
 hi LineNrBelow guifg=#FFAA32
 
+hi PMenu    ctermfg=Yellow ctermbg=Black guibg=#151515
+hi PMenuSel                              guibg=#313131
+
+hi TelescopeSelection guibg=#232323
+
+" syntax stuff
 hi Normal	guifg=White		guibg=Black
 hi Normal	ctermfg=White		ctermbg=Black
 
