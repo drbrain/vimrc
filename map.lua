@@ -1,9 +1,9 @@
 function remap(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.keymap.set(mode, lhs, rhs, options)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Diagnostics
@@ -19,44 +19,43 @@ remap("n", "<space>q", vim.diagnostic.setloclist, silent)
 
 -- LSP
 local bufopts = { silent=true, buffer=bufnr }
+local lsp = vim.lsp.buf
 -- Show signature help
-remap("n", "<C-k>",     vim.lsp.buf.signature_help,         bufopts)
+remap("n", "<C-k>",     lsp.signature_help,         bufopts)
 -- Jump to type definition (I don't use tabs)
-remap("n", "1gD",       vim.lsp.buf.type_definition,        bufopts)
-remap("n", "<space>D",  vim.lsp.buf.type_definition,        bufopts)
-remap("n", "gt",        vim.lsp.buf.type_definition,        bufopts)
+remap("n", "1gD",       lsp.type_definition,        bufopts)
+remap("n", "<space>D",  lsp.type_definition,        bufopts)
+remap("n", "gt",        lsp.type_definition,        bufopts)
 -- Apply code action
-remap("n", "<space>ca", vim.lsp.buf.code_action,            bufopts)
+remap("n", "<space>ca", lsp.code_action,            bufopts)
 -- Format buffer
-remap("n", "<space>f",  vim.lsp.buf.formatting,             bufopts)
+remap("n", "<space>f",  lsp.formatting,             bufopts)
 -- Rename symbol
-remap("n", "<space>rn", vim.lsp.buf.rename,                 bufopts)
+remap("n", "<space>rn", lsp.rename,                 bufopts)
 -- Add to workspace folder
-remap("n", "<space>wa", vim.lsp.buf.add_workspace_folder,   bufopts)
+remap("n", "<space>wa", lsp.add_workspace_folder,   bufopts)
 -- Show workspace folders
 remap("n", "<space>wl", function()
-	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	print(vim.inspect(lsp.list_workspace_folders()))
 end, bufopts)
 -- Remove workspace folder
-remap("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+remap("n", "<space>wr", lsp.remove_workspace_folder, bufopts)
 -- Show hover
-remap("n", "K",         vim.lsp.buf.hover,                   bufopts)
+remap("n", "K",         lsp.hover,                   bufopts)
 -- List buffer symbols in quickfix
-remap("n", "g0",        vim.lsp.buf.document_symbol,         bufopts)
-remap("n", "gD",        vim.lsp.buf.declaration,             bufopts)
+remap("n", "g0",        lsp.document_symbol,         bufopts)
+remap("n", "gD",        lsp.declaration,             bufopts)
 -- List workspace symbols in quickfix
-remap("n", "gW",        vim.lsp.buf.workspace_symbol,        bufopts)
+remap("n", "gW",        lsp.workspace_symbol,        bufopts)
 -- Jump to definition
-remap("n", "gd",        vim.lsp.buf.definition,              bufopts)
+remap("n", "gd",        lsp.definition,              bufopts)
 -- Jump to implementation
-remap("n", "gi",        vim.lsp.buf.implementation,          bufopts)
+remap("n", "gi",        lsp.implementation,          bufopts)
 -- List references in quickfix
-remap("n", "gr",        vim.lsp.buf.references,              bufopts)
+remap("n", "gr",        lsp.references,              bufopts)
 
--- Lspsaga
---
--- code action
 local action = require("lspsaga.codeaction")
+-- code action
 remap("n", "<leader>ca", action.code_action, silent)
 remap("v", "<leader>ca", function()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
@@ -66,11 +65,12 @@ end, silent)
 remap("n", "<leader>lr", require("lspsaga.rename").lsp_rename, silent)
 
 
--- Telescope
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
-remap("n", "<leader>fb", require('telescope.builtin').buffers, nil)
-remap("n", "<leader>ff", require('telescope.builtin').find_files, nil)
-remap("n", "<leader>fg", require('telescope.builtin').live_grep, nil)
-remap("n", "<leader>fh", require('telescope.builtin').help_tags, nil)
-remap("n", "<leader>fi", require('telescope.builtin').lsp_incoming_calls, nil)
-remap("n", "<leader>fo", require('telescope.builtin').lsp_outgoing_calls, nil)
+local telescope = require("telescope.builtin")
+remap("n", "<leader>fb", telescope.buffers, nil)
+remap("n", "<leader>ff", telescope.find_files, nil)
+remap("n", "<leader>fg", telescope.live_grep, nil)
+remap("n", "<leader>fh", telescope.help_tags, nil)
+remap("n", "<leader>fi", telescope.lsp_incoming_calls, nil)
+remap("n", "<leader>fo", telescope.lsp_outgoing_calls, nil)
+remap("n", "<leader>fs", telescope.lsp_workspace_symbols, nil)
