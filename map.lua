@@ -40,8 +40,6 @@ remap("n", "<space>wl", function()
 end, bufopts)
 -- Remove workspace folder
 remap("n", "<space>wr", lsp.remove_workspace_folder, bufopts)
--- Show hover
-remap("n", "K",         lsp.hover,                   bufopts)
 -- List buffer symbols in quickfix
 remap("n", "g0",        lsp.document_symbol,         bufopts)
 remap("n", "gD",        lsp.declaration,             bufopts)
@@ -61,9 +59,28 @@ remap("v", "<leader>ca", function()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
     action.range_code_action()
 end, silent)
+remap("n", "<leader>cd", require("lspsaga.diagnostic").show_line_diagnostics, silent)
+remap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", silent)
+
+-- diagnostic
+local diagnostic = require("lspsaga.diagnostic")
+local err = vim.diagnostic.severity.ERROR
+-- jump to diagnostic
+vim.keymap.set("n", "[e", diagnostic.goto_prev, silent)
+vim.keymap.set("n", "]e", diagnostic.goto_next, silent)
+-- jump to error
+vim.keymap.set("n", "[E", function()
+  diagnostic.goto_prev({ severity = err })
+end, silent)
+vim.keymap.set("n", "]E", function()
+  diagnosticostic.goto_next({ severity = err })
+end, silent)
+
+-- hover
+remap("n", "K", require("lspsaga.hover").render_hover_doc, silent)
+
 -- rename
 remap("n", "<leader>lr", require("lspsaga.rename").lsp_rename, silent)
-
 
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
 local telescope = require("telescope.builtin")
