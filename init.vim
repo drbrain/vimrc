@@ -2,7 +2,7 @@ set shell=/bin/bash
 
 source ~/.config/nvim/plug.vim
 
-source ~/.config/nvim/appearance.vim
+source ~/.config/nvim/appearance.lua
 source ~/.config/nvim/airline.vim
 source ~/.config/nvim/complete.lua
 source ~/.config/nvim/gui.vim
