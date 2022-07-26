@@ -12,6 +12,7 @@ source ~/.config/nvim/cdpath.vim
 source ~/.config/nvim/gutentags.vim
 source ~/.config/nvim/highlight.vim
 source ~/.config/nvim/leader.vim
+source ~/.config/nvim/lsp-lines.lua
 source ~/.config/nvim/lsp.lua
 source ~/.config/nvim/lspsaga.lua
 source ~/.config/nvim/map.lua

@@ -7,6 +7,7 @@ set rtp+=/opt/homebrew/opt/fzf
 
 call plug#begin()
 
+Plug 'Maan2003/lsp_lines.nvim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'LhKipp/nvim-nu', {'do': ':TSInstall nu'}
 Plug 'folke/trouble.nvim'
