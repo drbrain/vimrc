@@ -27,11 +27,11 @@ remap("n", "1gD",       lsp.type_definition,        bufopts)
 remap("n", "<space>D",  lsp.type_definition,        bufopts)
 remap("n", "gt",        lsp.type_definition,        bufopts)
 -- Apply code action
-remap("n", "<space>ca", lsp.code_action,            bufopts)
+--remap("n", "<space>ca", lsp.code_action,            bufopts)
 -- Format buffer
 remap("n", "<space>f",  lsp.formatting,             bufopts)
 -- Rename symbol
-remap("n", "<space>rn", lsp.rename,                 bufopts)
+--remap("n", "<space>rn", lsp.rename,                 bufopts)
 -- Add to workspace folder
 remap("n", "<space>wa", lsp.add_workspace_folder,   bufopts)
 -- Show workspace folders
@@ -60,7 +60,6 @@ remap("v", "<leader>ca", function()
     action.range_code_action()
 end, silent)
 remap("n", "<leader>cd", require("lspsaga.diagnostic").show_line_diagnostics, silent)
-remap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", silent)
 
 -- diagnostic
 local diagnostic = require("lspsaga.diagnostic")
@@ -80,7 +79,7 @@ end, silent)
 remap("n", "K", require("lspsaga.hover").render_hover_doc, silent)
 
 -- rename
-remap("n", "<leader>lr", require("lspsaga.rename").lsp_rename, silent)
+remap("n", "<leader>rn", require("lspsaga.rename").lsp_rename, silent)
 
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
 local telescope = require("telescope.builtin")
