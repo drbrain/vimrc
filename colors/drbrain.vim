@@ -31,6 +31,11 @@ hi CmpItemKindTypeParameter          guifg=LightGreen
 hi CmpItemKindVariable      gui=bold guifg=#CACACA
 hi CmpItemMenu                       guibg=#000000
 
+hi DiffAdd    guibg=#113400
+hi DiffChange guibg=#09007F
+hi DiffText   guibg=#340034
+hi DiffDelete guibg=#340000
+
 hi LineNr      gui=bold guifg=#FF7F82
 hi LineNrAbove guifg=#FFFD7F
 hi LineNrBelow guifg=#FFAA32
