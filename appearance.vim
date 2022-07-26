@@ -1,4 +1,4 @@
-colorscheme drbrain
+colorscheme tokyonight
 
 set number
 set relativenumber
