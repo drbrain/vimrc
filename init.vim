@@ -3,7 +3,6 @@ set shell=/bin/bash
 source ~/.config/nvim/plug.vim
 
 source ~/.config/nvim/appearance.lua
-source ~/.config/nvim/airline.vim
 source ~/.config/nvim/complete.lua
 source ~/.config/nvim/gui.vim
 source ~/.config/nvim/behavior.vim
@@ -15,6 +14,7 @@ source ~/.config/nvim/leader.vim
 source ~/.config/nvim/lsp-lines.lua
 source ~/.config/nvim/lsp.lua
 source ~/.config/nvim/lspsaga.lua
+source ~/.config/nvim/lualine.lua
 source ~/.config/nvim/map.lua
 source ~/.config/nvim/nu.lua
 source ~/.config/nvim/ruby.vim
