@@ -3,6 +3,7 @@ set shell=/bin/bash
 source ~/.config/nvim/plug.vim
 
 source ~/.config/nvim/appearance.lua
+source ~/.config/nvim/colorizer.lua
 source ~/.config/nvim/complete.lua
 source ~/.config/nvim/gui.vim
 source ~/.config/nvim/behavior.vim
