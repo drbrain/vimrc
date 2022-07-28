@@ -9,6 +9,7 @@ saga.init_lsp_saga({
     sign_priority = 0,
     virtual_text = true,
   },
+  code_action_num_shortcut = true,
 --  symbol_in_winbar = {
 --    in_custom = true
 --  }
