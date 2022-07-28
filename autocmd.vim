@@ -25,6 +25,7 @@ au FileType cpp setlocal tw=78 ts=8 sts=4 sw=4 noet
 au FileType groovy setlocal tw=78 ts=2 sts=2 sw=2 et
 
 au FileType css    setlocal tw=78 ts=2 sts=2 sw=2 et   nosi
+au FileType lua    setlocal tw=78 ts=2 sts=2 sw=2 et   nosi
 au FileType ruby   setlocal tw=78 ts=2 sts=2 sw=2 et   nosi
 au FileType vim    setlocal tw=78 ts=2 sts=2 sw=2 et   nosi
 au FileType xml    setlocal tw=78 ts=2 sts=2 sw=2 et   nosi
