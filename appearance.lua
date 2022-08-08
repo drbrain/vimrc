@@ -7,6 +7,10 @@ vim.g.tokyonight_colors = {
 
 vim.cmd[[colorscheme tokyonight]]
 
+vim.cmd("hi LineNr guifg=#ff9e64")
+vim.cmd("hi LineNrAbove guifg=#7dcfff")
+vim.cmd("hi LineNrBelow guifg=#bb9af7")
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 3
