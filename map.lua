@@ -52,34 +52,33 @@ remap("n", "gi",        lsp.implementation,          bufopts)
 -- List references in quickfix
 remap("n", "gr",        lsp.references,              bufopts)
 
-local action = require("lspsaga.codeaction")
+local keymap = vim.keymap.set
 -- code action
-remap("n", "<leader>ca", action.code_action, silent)
-remap("v", "<leader>ca", function()
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-    action.range_code_action()
-end, silent)
-remap("n", "<leader>cd", require("lspsaga.diagnostic").show_line_diagnostics, silent)
+keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", silent)
+keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", silent)
 
--- diagnostic
-local diagnostic = require("lspsaga.diagnostic")
-local err = vim.diagnostic.severity.ERROR
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", silent)
+
 -- jump to diagnostic
-vim.keymap.set("n", "[e", diagnostic.goto_prev, silent)
-vim.keymap.set("n", "]e", diagnostic.goto_next, silent)
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+
 -- jump to error
-vim.keymap.set("n", "[E", function()
-  diagnostic.goto_prev({ severity = err })
+keymap("n", "[E", function()
+  require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end, silent)
-vim.keymap.set("n", "]E", function()
-  diagnosticostic.goto_next({ severity = err })
+keymap("n", "]E", function()
+  require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, silent)
 
 -- hover
-remap("n", "K", require("lspsaga.hover").render_hover_doc, silent)
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", silent)
 
 -- rename
-remap("n", "<leader>rn", require("lspsaga.rename").lsp_rename, silent)
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>", silent)
+
+-- outline
+keymap("n","<leader>o", "<cmd>LSoutlineToggle<CR>", silent)
 
 -- https://github.com/nvim-telescope/telescope.nvim#pickers
 local telescope = require("telescope.builtin")
