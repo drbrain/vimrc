@@ -1,11 +1,14 @@
 vim.o.background = "dark"
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_colors = {
-  bg = "#13151F",
-  bg_dark = "#0F1119",
-}
 
-vim.cmd[[colorscheme tokyonight]]
+require("tokyonight").setup({
+  style = "night",
+  on_colors = function(colors)
+    colors.bg = "#13151F"
+    colors.bg_dark = "#0F1119"
+  end
+})
+
+vim.cmd[[colorscheme tokyonight-night]]
 
 vim.cmd("hi LineNr guifg=#ff9e64")
 vim.cmd("hi LineNrAbove guifg=#7dcfff")
