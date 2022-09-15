@@ -51,12 +51,6 @@ nmap ga <Plug>(EasyAlign)
 "let g:dispatch_compilers = {}
 "let g:dispatch_compilers['devly'] = 'minitest'
 
-" vim-test
-"let test#custom_runners = {'Ruby': ['Devly']}
-"let test#strategy = "dispatch"
-
-"let g:test#runner_commands = ["Devly", "Minitest"]
-
 " rust.vim
 let g:rustfmt_autosave = 1
 
