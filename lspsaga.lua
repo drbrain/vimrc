@@ -10,9 +10,10 @@ saga.init_lsp_saga({
     virtual_text = true,
   },
   code_action_num_shortcut = true,
---  symbol_in_winbar = {
---    in_custom = true
---  }
+  symbol_in_winbar = {
+    enable = false,
+    -- in_custom = true,
+  }
 })
 
 -- TODO needs neovim 8
