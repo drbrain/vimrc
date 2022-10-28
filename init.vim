@@ -16,12 +16,10 @@ source ~/.config/nvim/gutentags.vim
 source ~/.config/nvim/highlight.vim
 source ~/.config/nvim/leader.vim
 source ~/.config/nvim/lsp-lines.lua
-source ~/.config/nvim/lsp.lua
 source ~/.config/nvim/lspsaga.lua
 source ~/.config/nvim/lualine.lua
 source ~/.config/nvim/map.lua
 source ~/.config/nvim/ruby.vim
-source ~/.config/nvim/rust.lua
 "source ~/.config/nvim/ruby-lang.vim
 source ~/.config/nvim/search.vim
 source ~/.config/nvim/test.vim
