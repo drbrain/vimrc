@@ -1,5 +1,7 @@
 set shell=/bin/bash
 
+lua require('plugins')
+
 source ~/.config/nvim/plug.vim
 
 source ~/.config/nvim/appearance.lua
@@ -19,7 +21,6 @@ source ~/.config/nvim/lspsaga.lua
 source ~/.config/nvim/lualine.lua
 source ~/.config/nvim/map.lua
 source ~/.config/nvim/nu.lua
-source ~/.config/nvim/null-ls.lua
 source ~/.config/nvim/ruby.vim
 source ~/.config/nvim/rust.lua
 "source ~/.config/nvim/ruby-lang.vim
