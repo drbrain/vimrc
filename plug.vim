@@ -7,14 +7,11 @@ set rtp+=/opt/homebrew/opt/fzf
 
 call plug#begin()
 
-Plug 'Maan2003/lsp_lines.nvim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'LhKipp/nvim-nu', {'do': ':TSInstall nu'}
 Plug 'folke/tokyonight.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'gelguy/wilder.nvim'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'godlygeek/tabular'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
