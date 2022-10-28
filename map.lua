@@ -79,13 +79,3 @@ keymap("n", "gr", "<cmd>Lspsaga rename<CR>", silent)
 
 -- outline
 keymap("n","<leader>o", "<cmd>LSoutlineToggle<CR>", silent)
-
--- https://github.com/nvim-telescope/telescope.nvim#pickers
-local telescope = require("telescope.builtin")
-remap("n", "<leader>fb", telescope.buffers, nil)
-remap("n", "<leader>ff", telescope.find_files, nil)
-remap("n", "<leader>fg", telescope.live_grep, nil)
-remap("n", "<leader>fh", telescope.help_tags, nil)
-remap("n", "<leader>fi", telescope.lsp_incoming_calls, nil)
-remap("n", "<leader>fo", telescope.lsp_outgoing_calls, nil)
-remap("n", "<leader>fs", telescope.lsp_workspace_symbols, nil)

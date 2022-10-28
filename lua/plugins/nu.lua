@@ -2,9 +2,11 @@ local function init(use)
   use({
     "LhKipp/nvim-nu",
 
-    config = function()
-      vim.cmd "TSInstall nu"
+    after = "nvim-treesitter",
 
+    run = ":TSInstall nu",
+
+    config = function()
       require("nu").setup({
         complete_cmd_names = true,
       })

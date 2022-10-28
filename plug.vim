@@ -37,9 +37,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 "Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ruanyl/vim-gh-line'
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
@@ -47,7 +44,6 @@ Plug 'sindrets/diffview.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-test/vim-test'
-Plug 'xiyaowong/telescope-emoji.nvim'
 
 call plug#end()
 
