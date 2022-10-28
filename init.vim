@@ -11,7 +11,6 @@ source ~/.config/nvim/gui.vim
 source ~/.config/nvim/behavior.vim
 source ~/.config/nvim/autocmd.vim
 source ~/.config/nvim/cdpath.vim
-source ~/.config/nvim/gutentags.vim
 source ~/.config/nvim/highlight.vim
 source ~/.config/nvim/leader.vim
 source ~/.config/nvim/lualine.lua
