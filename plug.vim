@@ -7,8 +7,6 @@ set rtp+=/opt/homebrew/opt/fzf
 
 call plug#begin()
 
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'folke/tokyonight.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/trouble.nvim'
 Plug 'gelguy/wilder.nvim'
@@ -24,9 +22,7 @@ Plug 'jinh0/eyeliner.nvim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lambdalisue/nerdfont.vim'
-Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lualine/lualine.nvim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
