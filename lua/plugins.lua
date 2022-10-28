@@ -4,6 +4,7 @@ return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
 
+  require("plugins/diffview").init(use)
   require("plugins/lsp").init(use)
   require("plugins/nu").init(use)
   require("plugins/null-ls").init(use)
