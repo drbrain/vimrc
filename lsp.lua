@@ -1,4 +1,7 @@
-require('lspconfig').rust_analyzer.setup{}
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "rust_analyzer" }
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -12,12 +15,12 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-require('lspconfig')['rust_analyzer'].setup {
-  -- cmd = { "rustup", "run", "stable", "rust-analyzer" },
-  on_attach = on_attach,
-  flags = lsp_flags,
-  -- Server-specific settings...
-  settings = {
-    ["rust-analyzer"] = {}
-  }
-}
+-- require('lspconfig')['rust_analyzer'].setup {
+--   -- cmd = { "rustup", "run", "stable", "rust-analyzer" },
+--   on_attach = on_attach,
+--   flags = lsp_flags,
+--   -- Server-specific settings...
+--   settings = {
+--     ["rust-analyzer"] = {}
+--   }
+-- }
