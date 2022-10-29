@@ -15,7 +15,6 @@ source ~/.config/nvim/ruby.vim
 "source ~/.config/nvim/ruby-lang.vim
 source ~/.config/nvim/search.vim
 source ~/.config/nvim/test.vim
-source ~/.config/nvim/trouble.lua
 source ~/.config/nvim/spell.vim
 source ~/.config/nvim/terminal.vim
 source ~/.config/nvim/wilder.vim
