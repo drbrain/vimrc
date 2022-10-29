@@ -4,7 +4,6 @@ lua require('plugins')
 
 source ~/.config/nvim/plug.vim
 
-source ~/.config/nvim/complete.lua
 source ~/.config/nvim/gui.vim
 source ~/.config/nvim/behavior.vim
 source ~/.config/nvim/autocmd.vim
