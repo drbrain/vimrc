@@ -8,7 +8,6 @@ set rtp+=/opt/homebrew/opt/fzf
 call plug#begin()
 
 Plug 'godlygeek/tabular'
-Plug 'junegunn/vim-easy-align'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-test/vim-test'
 
