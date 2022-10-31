@@ -17,5 +17,4 @@ source ~/.config/nvim/search.vim
 source ~/.config/nvim/test.vim
 source ~/.config/nvim/spell.vim
 source ~/.config/nvim/terminal.vim
-source ~/.config/nvim/wilder.vim
 

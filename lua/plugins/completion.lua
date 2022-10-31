@@ -28,17 +28,10 @@ function init(use)
         }),
         sources = cmp.config.sources({
           { name = "buffer" },
-          { name = "cmdline" },
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "vsnip" },
         }),
-      })
-
-      cmp.setup.cmdline(":", {
-        sources = {
-          { name = "cmdline" }
-        }
       })
 
       cmp.setup.cmdline("/", {
@@ -50,7 +43,6 @@ function init(use)
   }
 
   use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-cmdline"
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-path"
   use "hrsh7th/cmp-vsnip"

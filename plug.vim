@@ -7,7 +7,6 @@ set rtp+=/opt/homebrew/opt/fzf
 
 call plug#begin()
 
-Plug 'gelguy/wilder.nvim'
 Plug 'godlygeek/tabular'
 Plug 'jinh0/eyeliner.nvim'
 Plug 'junegunn/vim-easy-align'

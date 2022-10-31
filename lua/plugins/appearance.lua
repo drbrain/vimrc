@@ -64,6 +64,36 @@ function init(use)
   }
 
   use {
+    "gelguy/wilder.nvim",
+    requires = "nvim-web-devicons",
+    after = "nvim-cmp",
+    config = function()
+      local wilder = require("wilder")
+      wilder.setup({modes = {":", "/", "?"}})
+
+      wilder.set_option(
+        "renderer",
+        wilder.popupmenu_renderer(
+          wilder.popupmenu_border_theme({
+            border = "rounded",
+            highlighter = wilder.basic_highlighter(),
+            highlights = {
+              accent = wilder.make_hl("WilderAccent", "Pmenu", {{a = 1}, {a = 1}, {foreground = "#bb7cd7"}}),
+              border = "Normal",
+            },
+            left = {
+              " ", wilder.popupmenu_devicons(),
+            },
+            right = {
+              " ", wilder.popupmenu_scrollbar(),
+            },
+          })
+        )
+      )
+    end,
+  }
+
+  use {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({
