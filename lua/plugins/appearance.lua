@@ -1,4 +1,6 @@
 function init(use)
+  vim.opt.termguicolors = true
+
   use "NLKNguyen/papercolor-theme"
 
   use {
