@@ -8,7 +8,6 @@ set rtp+=/opt/homebrew/opt/fzf
 call plug#begin()
 
 Plug 'godlygeek/tabular'
-Plug 'jinh0/eyeliner.nvim'
 Plug 'junegunn/vim-easy-align'
 Plug 'nvim-lua/popup.nvim'
 Plug 'ruanyl/vim-gh-line'
