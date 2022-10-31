@@ -9,7 +9,6 @@ call plug#begin()
 
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
-Plug 'nvim-lua/popup.nvim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-ruby/vim-ruby'
