@@ -1,4 +1,6 @@
 local function init(use)
+  vim.opt.rtp:append("/opt/homebrew/opt/fzf")
+
   use {
     "nvim-telescope/telescope.nvim",
 
