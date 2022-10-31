@@ -1,4 +1,6 @@
 function init(use)
+  use "godlygeek/tabular"
+
   use {
     "junegunn/vim-easy-align",
 
