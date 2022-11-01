@@ -28,6 +28,7 @@ function init(use)
         }),
         sources = cmp.config.sources({
           { name = "buffer" },
+          { name = "crates" },
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "vsnip" },
