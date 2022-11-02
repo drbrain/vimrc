@@ -33,11 +33,6 @@ let g:netrw_nogx = 1
 " terminal
 tnoremap <D-Esc> <C-\><C-n>
 
-" use ag with ack plugin
-let g:ackprg = 'ag --vimgrep --smart-case'
-cnoreabbrev ag Ack
-nnoremap <Leader>a :Ack!<Space>
-
 " vim-dispatch
 "let g:dispatch_compilers = {}
 "let g:dispatch_compilers['devly'] = 'minitest'
