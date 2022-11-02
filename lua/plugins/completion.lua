@@ -27,11 +27,11 @@ function init(use)
 
         }),
         sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "vsnip" },
+          { name = "path" },
           { name = "buffer" },
           { name = "crates" },
-          { name = "nvim_lsp" },
-          { name = "path" },
-          { name = "vsnip" },
         }),
       })
 
@@ -43,11 +43,11 @@ function init(use)
     end,
   }
 
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-vsnip"
-  use "hrsh7th/vim-vsnip"
+  use { "hrsh7th/cmp-buffer",   requires = "nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lsp", requires = "nvim-cmp" }
+  use { "hrsh7th/cmp-path",     requires = "nvim-cmp" }
+  use { "hrsh7th/cmp-vsnip",    requires = "nvim-cmp" }
+  use { "hrsh7th/vim-vsnip",    requires = "nvim-cmp" }
 end
 
 return { init = init }
