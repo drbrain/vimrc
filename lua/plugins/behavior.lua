@@ -22,6 +22,35 @@ function init(use)
       })
     end
   }
+
+  use {
+    "lewis6991/spellsitter.nvim",
+
+    config = function()
+      require("spellsitter").setup({
+        highlight = {
+          enable = true,
+        }
+      })
+
+      vim.o.spelllang = "en_us"
+
+      local spell_group = vim.api.nvim_create_augroup("spell", { clear = true })
+      -- disable spellchecking in the embeded terminal
+      vim.api.nvim_create_autocmd("TermOpen", {
+        pattern = "*",
+        command = "setlocal nospell",
+        group = spell_group,
+      })
+
+      -- Disable spelling for file types
+      -- vim.api.nvim_create_autocmd("FileType", {
+      --   pattern = { "python", "lua" },
+      --   command = "setlocal nospell",
+      --   group = spell_group,
+      -- })
+    end
+  }
 end
 
 return { init = init }

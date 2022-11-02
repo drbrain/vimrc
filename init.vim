@@ -11,6 +11,5 @@ source ~/.config/nvim/leader.vim
 source ~/.config/nvim/map.lua
 "source ~/.config/nvim/ruby-lang.vim
 source ~/.config/nvim/search.vim
-source ~/.config/nvim/spell.vim
 source ~/.config/nvim/terminal.vim
 
