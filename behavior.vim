@@ -17,8 +17,6 @@ syntax on
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
-set foldmethod=syntax
-
 set wildmode=list:longest
 
 set history=200
