@@ -59,6 +59,10 @@ function init(use)
               "filetype",
               icon_only = true,
             }
+          },
+          lualine_z = {
+            "%B",
+            "location",
           }
         }
       })
