@@ -44,47 +44,48 @@ local function init(use)
     end,
   }
 
-  use {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    requires = "nvim-treesitter",
-
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            include_surrounding_whitespace = false,
-
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["af"] = { query = "@function.outer", desc = "select around a function" },
-              ["if"] = { query = "@function.inner", desc = "select inner part of a function" },
-              ["ac"] = { query = "@class.outer", desc = "select around a class" },
-              ["ic"] = { query = "@class.inner", desc = "select inner part of a class" },
-            },
-            selection_modes = {
-              ["@parameter.outer"] = "v", -- charwise
-              ["@function.outer"] = "V", -- linewise
-              ["@class.outer"] = "<c-v>", -- blockwise
-            },
-            move = {
-              enable = true,
-              set_jumps = true,
-              goto_next_start = {
-                ["]]"] = "@function.outer",
-                ["]\\"] = "@class.outer",
-              },
-              goto_previous_start = {
-                ["[["] = "@function.outer",
-                ["[\\"] = "@class.outer",
-              },
-            },
-          },
-        },
-      })
-    end
-  }
+  -- Disabled due to https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/317
+  -- use {
+  --   "nvim-treesitter/nvim-treesitter-textobjects",
+  --   requires = "nvim-treesitter",
+  --
+  --   config = function()
+  --     require("nvim-treesitter.configs").setup({
+  --       textobjects = {
+  --         select = {
+  --           enable = true,
+  --           lookahead = true,
+  --           include_surrounding_whitespace = false,
+  --
+  --           keymaps = {
+  --             -- You can use the capture groups defined in textobjects.scm
+  --             ["af"] = { query = "@function.outer", desc = "select around a function" },
+  --             ["if"] = { query = "@function.inner", desc = "select inner part of a function" },
+  --             ["ac"] = { query = "@class.outer", desc = "select around a class" },
+  --             ["ic"] = { query = "@class.inner", desc = "select inner part of a class" },
+  --           },
+  --           selection_modes = {
+  --             ["@parameter.outer"] = "v", -- charwise
+  --             ["@function.outer"] = "V", -- linewise
+  --             ["@class.outer"] = "<c-v>", -- blockwise
+  --           },
+  --           move = {
+  --             enable = true,
+  --             set_jumps = true,
+  --             goto_next_start = {
+  --               ["]]"] = "@function.outer",
+  --               ["]\\"] = "@class.outer",
+  --             },
+  --             goto_previous_start = {
+  --               ["[["] = "@function.outer",
+  --               ["[\\"] = "@class.outer",
+  --             },
+  --           },
+  --         },
+  --       },
+  --     })
+  --   end
+  -- }
 end
 
 return { init = init }
