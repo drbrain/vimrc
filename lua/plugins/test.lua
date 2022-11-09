@@ -49,7 +49,7 @@ function init(use)
       vim.keymap.set("n", "<Leader>ts", "<Cmd>lua require('neotest').summary.toggle()<CR>", options)
 
       -- show output
-      vim.keymap.set("n", "<Leader>ts", "<Cmd>lua require('neotest').output.open()<CR>", options)
+      vim.keymap.set("n", "<Leader>to", "<Cmd>lua require('neotest').output.open()<CR>", options)
 
       -- jump
       vim.keymap.set("n", "<Leader>[t", "<Cmd>lua require('neotest').jump.prev()<CR>", options)
