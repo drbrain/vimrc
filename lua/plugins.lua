@@ -3,8 +3,6 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
   use "nvim-lua/plenary.nvim"
-  -- TODO: remove when updating to NeoVim 8
-  use "antoinemadec/FixCursorHold.nvim"
 
   require("plugins/appearance").init(use)
   require("plugins/behavior").init(use)
