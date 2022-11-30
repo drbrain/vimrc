@@ -1,8 +1,13 @@
 function init(use)
   use {
     "hrsh7th/nvim-cmp",
-    requires = "lspkind.nvim",
-    after = "nvim-lspconfig",
+    requires = {
+      "lspkind.nvim",
+      "nvim-material-icon",
+    },
+    after = {
+      "nvim-lspconfig",
+    },
 
     config = function()
       local cmp = require("cmp")

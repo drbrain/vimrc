@@ -46,8 +46,14 @@ function init(use)
 
   use {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    after = "tokyonight.nvim",
+    requires = {
+      "nvim-material-icon",
+      "nvim-web-devicons",
+    },
+    after = {
+      "tokyonight.nvim",
+    },
+
     config = function()
       require("lualine").setup({
         options = {
@@ -71,8 +77,11 @@ function init(use)
 
   use {
     "gelguy/wilder.nvim",
-    requires = "nvim-web-devicons",
-    after = "nvim-cmp",
+    requires = {
+      "nvim-cmp",
+      "nvim-material-icon",
+      "nvim-web-devicons",
+    },
     config = function()
       local wilder = require("wilder")
       wilder.setup({modes = {":", "/", "?"}})
@@ -110,11 +119,29 @@ function init(use)
     end,
   }
 
+  -- We override this with nvim-material-icon, but need it for compatibility
+  use "kyazdani42/nvim-web-devicons"
+
   use {
-    "kyazdani42/nvim-web-devicons",
+    "DaikyXendo/nvim-material-icon",
+    requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("nvim-web-devicons").setup()
-    end
+      local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
+      if not web_devicons_ok then
+        return
+      end
+
+      local material_icon_ok, material_icon = pcall(require, "nvim-material-icon")
+      if not material_icon_ok then
+        return
+      end
+
+      web_devicons.setup({
+        override = material_icon.get_icons(),
+      })
+
+      material_icon.setup()
+    end,
   }
 end
 

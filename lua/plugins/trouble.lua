@@ -1,7 +1,10 @@
 function init(use)
   use {
     "folke/trouble.nvim",
-    requires = "nvim-web-devicons",
+    requires = {
+      "nvim-web-devicons",
+      "DaikyXendo/nvim-material-icon",
+    },
 
     config = function()
       require("trouble").setup({
