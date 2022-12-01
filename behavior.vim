@@ -14,7 +14,6 @@ filetype plugin on
 
 syntax on
 
-set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 set wildmode=list:longest

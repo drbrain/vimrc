@@ -4,6 +4,40 @@ local function init(use)
     after = "mason-lspconfig.nvim",
 
     config = function()
+      local lspconfig = require("lspconfig")
+      -- Because null-ls has spelling enabled I get garbage suggestions:
+      -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/20
+      --
+      -- local lsp_defaults = lspconfig.util.default_config
+      --
+      -- lsp_defaults.capabilities = vim.tbl_deep_extend(
+      --   "force",
+      --   lsp_defaults.capabilities,
+      --   require("cmp_nvim_lsp").default_capabilities()
+      -- )
+
+      -- Use an on_attach function to only map the following keys
+      -- after the language server attaches to the current buffer
+      local on_attach = function(client, bufnr)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+      end
+
+      local lsp_flags = {
+        -- This is the default in Nvim 0.7+
+        debounce_text_changes = 150,
+      }
+
+      lspconfig["rust_analyzer"].setup {
+        -- I could not get `rustup run stable rust-analyzer` to work inside vimr
+        -- cmd = { "rustup", "run", "stable", "rust-analyzer" },
+        on_attach = on_attach,
+        flags = lsp_flags,
+        -- Server-specific settings...
+        settings = {
+          ["rust-analyzer"] = {}
+        }
+      }
     end,
   }
 
@@ -22,29 +56,6 @@ local function init(use)
       require("mason-lspconfig").setup({
         ensure_installed = { "rust_analyzer" }
       })
-
-      -- Use an on_attach function to only map the following keys
-      -- after the language server attaches to the current buffer
-      local on_attach = function(client, bufnr)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-      end
-
-      local lsp_flags = {
-        -- This is the default in Nvim 0.7+
-        debounce_text_changes = 150,
-      }
-
-      -- I think I could not get `rustup run stable rust-analyzer` to work inside vimr
-      -- require('lspconfig')['rust_analyzer'].setup {
-      --   -- cmd = { "rustup", "run", "stable", "rust-analyzer" },
-      --   on_attach = on_attach,
-      --   flags = lsp_flags,
-      --   -- Server-specific settings...
-      --   settings = {
-      --     ["rust-analyzer"] = {}
-      --   }
-      -- }
     end,
   }
 
