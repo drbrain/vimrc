@@ -1,8 +1,10 @@
 local function init(use)
   use({
     "LhKipp/nvim-nu",
-
-    after = "nvim-treesitter",
+    after = {
+      "null-ls.nvim",
+      "nvim-treesitter",
+    },
 
     run = ":TSInstall nu",
 
