@@ -5,16 +5,13 @@ local function init(use)
 
     config = function()
       local lspconfig = require("lspconfig")
-      -- Because null-ls has spelling enabled I get garbage suggestions:
-      -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/20
-      --
-      -- local lsp_defaults = lspconfig.util.default_config
-      --
-      -- lsp_defaults.capabilities = vim.tbl_deep_extend(
-      --   "force",
-      --   lsp_defaults.capabilities,
-      --   require("cmp_nvim_lsp").default_capabilities()
-      -- )
+      local lsp_defaults = lspconfig.util.default_config
+
+      lsp_defaults.capabilities = vim.tbl_deep_extend(
+        "force",
+        lsp_defaults.capabilities,
+        require("cmp_nvim_lsp").default_capabilities()
+      )
 
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer

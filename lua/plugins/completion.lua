@@ -91,7 +91,7 @@ function init(use)
   }
 
   use { "hrsh7th/cmp-buffer",                   requires = "nvim-cmp" }
-  -- use { "hrsh7th/cmp-nvim-lsp",                 requires = "nvim-cmp" }
+  use { "hrsh7th/cmp-nvim-lsp",                 requires = "nvim-cmp" }
   use { "hrsh7th/cmp-nvim-lsp-document-symbol", requires = "nvim-cmp" }
   use { "hrsh7th/cmp-nvim-lsp-signature-help",  requires = "nvim-cmp" }
   use { "hrsh7th/cmp-path",                     requires = "nvim-cmp" }
