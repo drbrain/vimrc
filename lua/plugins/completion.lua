@@ -76,6 +76,12 @@ function init(use)
             return require("lspkind").cmp_format({ with_text = false })(entry, vim_item)
           end
         },
+        view = {
+          entries = {
+            name = "custom",
+            selection_order = "nearest_cursor",
+          }
+        },
       })
 
       cmp.setup.cmdline("/", {
