@@ -2,21 +2,15 @@ local function init(use)
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = "plenary.nvim",
-    after = "gitsigns.nvim",
+    after = {
+      "gitsigns.nvim",
+      "null-ls-embedded",
+    },
 
     config = function()
       local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.code_actions.cspell,
+      local sources = {
           null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.diagnostics.cspell.with({
-            underline = true,
-            virtual_text = false,
-            signs = true,
-            update_in_insert = false,
-            serverity_sort = true,
-          }),
           null_ls.builtins.diagnostics.gitlint,
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.luacheck,
@@ -24,7 +18,12 @@ local function init(use)
           null_ls.builtins.diagnostics.zsh,
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.jq,
-        },
+          require("null-ls-embedded").nls_source,
+        
+      }
+
+      null_ls.setup({
+        sources = sources,
       })
     end,
 
@@ -76,6 +75,10 @@ local function init(use)
  
       })
     end
+  }
+
+  use {
+    "LostNeophyte/null-ls-embedded"
   }
 end
 
