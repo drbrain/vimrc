@@ -66,7 +66,7 @@ local function init(use)
         diagnostic_header = { "❌", "⚠️", "ℹ️", "💡" },
         code_action_lightbulb = {
           enable = true,
-          sign = true,
+          sign = false,
           sign_priority = 0,
           virtual_text = false,
         },
