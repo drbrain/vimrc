@@ -25,16 +25,15 @@ local function init(use)
         debounce_text_changes = 150,
       }
 
-      lspconfig["rust_analyzer"].setup {
-        -- I could not get `rustup run stable rust-analyzer` to work inside vimr
-        -- cmd = { "rustup", "run", "stable", "rust-analyzer" },
-        on_attach = on_attach,
-        flags = lsp_flags,
-        -- Server-specific settings...
-        settings = {
-          ["rust-analyzer"] = {}
-        }
-      }
+      -- See :help mason-lspconfig-automatic-server-setup
+      require("mason-lspconfig").setup_handlers({
+        function (server_name)
+          lspconfig[server_name].setup({
+            on_attach = on_attach,
+            flags = lsp_flags,
+          })
+        end
+      })
     end,
   }
 
