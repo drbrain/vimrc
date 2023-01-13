@@ -54,13 +54,6 @@ function init(use)
           { name = "vsnip" },
           { name = "path" },
           { name = "crates" },
-        }, {
-          {
-            name = "buffer",
-            option = {
-              keyword_length = 5,
-            },
-          },
         }),
         formatting = {
           fields = { "menu", "abbr", "kind" },
@@ -87,8 +80,6 @@ function init(use)
       cmp.setup.cmdline("/", {
         sources = cmp.config.sources({
           { name = "nvim_lsp_document_symbol" }
-        }, {
-          { name = "buffer" }
         })
       })
 
@@ -96,7 +87,6 @@ function init(use)
     end,
   }
 
-  use { "hrsh7th/cmp-buffer",                   requires = "nvim-cmp" }
   use { "hrsh7th/cmp-nvim-lsp",                 requires = "nvim-cmp" }
   use { "hrsh7th/cmp-nvim-lsp-document-symbol", requires = "nvim-cmp" }
   use { "hrsh7th/cmp-nvim-lsp-signature-help",  requires = "nvim-cmp" }
