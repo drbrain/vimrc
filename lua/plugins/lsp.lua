@@ -1,82 +1,119 @@
 local function init(use)
+  use { "neovim/nvim-lspconfig", }
+  use { "williamboman/mason-lspconfig.nvim", }
+  use { "williamboman/mason.nvim", }
+
   use {
-    "neovim/nvim-lspconfig",
-    after = "mason-lspconfig.nvim",
+    "VonHeikemen/lsp-zero.nvim",
+    requires = {
+      -- LSP Support
+      "neovim/nvim-lspconfig",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+
+      -- Autocompletion
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lua",
+
+      -- Snippets
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets",
+
+      -- Language plugins
+      "simrat39/rust-tools.nvim",
+    },
 
     config = function()
-      local lspconfig = require("lspconfig")
-      local lsp_defaults = lspconfig.util.default_config
+      local lsp = require("lsp-zero")
+      lsp.preset("recommended")
 
-      lsp_defaults.capabilities = vim.tbl_deep_extend(
-        "force",
-        lsp_defaults.capabilities,
-        require("cmp_nvim_lsp").default_capabilities()
-      )
+      lsp.set_preferences({
+        set_lsp_keymaps = false,
+      })
 
-      -- Use an on_attach function to only map the following keys
-      -- after the language server attaches to the current buffer
-      local on_attach = function(client, bufnr)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+      local map_keys_on_attach = function(_, bufnr)
+        local map = function(m, lhs, rhs)
+          local key_opts = { noremap = true, silent = true }
+          vim.api.nvim_buf_set_keymap(bufnr, m, lhs, rhs, key_opts)
+        end
+
+        map("n", "K",     "<Cmd>lua vim.lsp.buf.hover()<CR>")
+        map("n", "gd",    "<Cmd>lua vim.lsp.buf.definition()<CR>")
+        map("n", "gD",    "<Cmd>lua vim.lsp.buf.declaration()<CR>")
+        map("n", "gi",    "<Cmd>lua vim.lsp.buf.implementation()<CR>")
+        map("n", "gt",    "<Cmd>lua vim.lsp.buf.type_definition()<CR>")
+        map("n", "gr",    "<Cmd>lua vim.lsp.buf.references()<CR>")
+        map("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
+
+        map("n", "gl",    "<Cmd>lua vim.diagnostic.open_float()<CR>")
       end
 
-      local lsp_flags = {
-        -- This is the default in Nvim 0.7+
-        debounce_text_changes = 150,
-      }
+      lsp.on_attach(map_keys_on_attach)
 
-      -- See :help mason-lspconfig-automatic-server-setup
-      require("mason-lspconfig").setup_handlers({
-        function (server_name)
-          lspconfig[server_name].setup({
-            on_attach = on_attach,
-            flags = lsp_flags,
-          })
-        end
+      -- https://github.com/VonHeikemen/lsp-zero.nvim/discussions/5
+      local lsp_rust = lsp.build_options("rust_analyzer", {
+        on_attach = map_keys_on_attach,
       })
-    end,
+
+      -- Configure lua language server for neovim
+      lsp.nvim_workspace()
+
+      lsp.setup()
+
+      require("rust-tools").setup({
+        server = lsp_rust
+      })
+    end
   }
 
   use {
-    "williamboman/mason.nvim",
-
-    config = function()
-      require("mason").setup()
-    end,
-  }
-
-  use {
-    "williamboman/mason-lspconfig.nvim",
-
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "rust_analyzer" }
-      })
-    end,
-  }
-
-  use({
     "glepnir/lspsaga.nvim",
+
     config = function()
       local saga = require("lspsaga")
-
       saga.setup({
         border_style = "rounded",
-        diagnostic_header = { "❌", "⚠️", "ℹ️", "💡" },
-        code_action_lightbulb = {
-          enable = true,
-          sign = false,
-          sign_priority = 0,
-          virtual_text = false,
+        code_action = {
+          num_shortcut = true,
         },
-        code_action_num_shortcut = true,
+        lightbulb = {
+          enable = false,
+        },
         symbol_in_winbar = {
           enable = true,
           in_custom = true,
         }
       })
+
+      local diagnostic = vim.diagnostic
+      local map = vim.keymap.set
+      map("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>")
+
+      map("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>")
+      map("v", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>")
+
+      map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+      map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+
+      map("n", "<Leader>sl", "<Cmd>Lspsaga show_line_diagnostics<CR>")
+      map("n", "<Leader>sc", "<Cmd>Lspsaga show_cursor_diagnostics<CR>")
+      map("n", "<Leader>sb", "<Cmd>Lspsaga show_buf_diagnostics<CR>")
+
+      map("n", "[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
+      map("n", "]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>")
+
+      map("n", "[E", function()
+        require("lspsaga.diagnostic").goto_prev({ severity = diagnostic.severity.ERROR })
+      end)
+      map("n", "]E", function()
+        require("lspsaga.diagnostic").goto_next({ severity = diagnostic.severity.ERROR })
+      end)
     end,
-  })
+  }
 
   use {
     "Maan2003/lsp_lines.nvim",
@@ -125,6 +162,7 @@ local function init(use)
         }
       })
 
+      local options = { noremap = true, silent = true }
       vim.keymap.set("n", "<Leader>so", "<Cmd>SymbolsOutline<CR>", options)
     end
   }

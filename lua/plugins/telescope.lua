@@ -5,18 +5,20 @@ local function init(use)
     "nvim-telescope/telescope.nvim",
 
     config = function()
-      require("telescope").load_extension("emoji")
-      require("telescope").load_extension("fzf")
+      local telescope = require("telescope")
+
+      telescope.load_extension("emoji")
+      telescope.load_extension("fzf")
 
       local options = { noremap = true }
-      local telescope = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>fb", telescope.buffers, options)
-      vim.keymap.set("n", "<leader>ff", telescope.find_files, options)
-      vim.keymap.set("n", "<leader>fg", telescope.live_grep, options)
-      vim.keymap.set("n", "<leader>fh", telescope.help_tags, options)
-      vim.keymap.set("n", "<leader>fi", telescope.lsp_incoming_calls, options)
-      vim.keymap.set("n", "<leader>fo", telescope.lsp_outgoing_calls, options)
-      vim.keymap.set("n", "<leader>fs", telescope.lsp_workspace_symbols, options)
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, options)
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, options)
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, options)
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, options)
+      vim.keymap.set("n", "<leader>fi", builtin.lsp_incoming_calls, options)
+      vim.keymap.set("n", "<leader>fo", builtin.lsp_outgoing_calls, options)
+      vim.keymap.set("n", "<leader>fs", builtin.lsp_workspace_symbols, options)
     end,
 
     requires = "plenary.nvim",

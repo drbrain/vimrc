@@ -27,7 +27,7 @@ function init(use)
       vim.opt.relativenumber = true
       vim.opt.numberwidth = 3
 
-      vim.opt.signcolumn = "auto:2-5"
+      vim.opt.signcolumn = "yes:3"
 
       vim.opt.visualbell = true
 
