@@ -1,3 +1,5 @@
+set shell = "/bin/zsh"
+
 if $CDPATH != ""
   finish
 endif
