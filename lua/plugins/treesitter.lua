@@ -1,8 +1,8 @@
-local function init(use)
-  use {
+return {
+  {
     "nvim-treesitter/nvim-treesitter",
 
-    run = function()
+    build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
 
@@ -42,12 +42,12 @@ local function init(use)
       vim.o.foldexpr = "nvim_treesitter#foldexpr()"
       vim.o.foldenable = false
     end,
-  }
+  },
 
   -- Disabled due to https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/317
-  -- use {
+  -- {
   --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   requires = "nvim-treesitter",
+  --   dependencies = "nvim-treesitter",
   --
   --   config = function()
   --     require("nvim-treesitter.configs").setup({
@@ -86,6 +86,4 @@ local function init(use)
   --     })
   --   end
   -- }
-end
-
-return { init = init }
+}

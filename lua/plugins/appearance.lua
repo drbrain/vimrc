@@ -1,9 +1,8 @@
-function init(use)
-  vim.opt.termguicolors = true
+vim.opt.termguicolors = true
 
-  use "NLKNguyen/papercolor-theme"
-
-  use {
+return {
+  "NLKNguyen/papercolor-theme",
+  {
     "folke/tokyonight.nvim",
 
     config = function()
@@ -42,18 +41,15 @@ function init(use)
 
       vim.g.airline_theme = "deus"
     end,
-  }
+  },
 
-  use {
+  {
     "nvim-lualine/lualine.nvim",
-    requires = {
+    dependencies = {
       "nvim-material-icon",
       "nvim-web-devicons",
-    },
-    after = {
       "tokyonight.nvim",
     },
-
     config = function()
       require("lualine").setup({
         options = {
@@ -73,11 +69,11 @@ function init(use)
         }
       })
     end,
-  }
+  },
 
-  use {
+  {
     "gelguy/wilder.nvim",
-    requires = {
+    dependencies = {
       "nvim-cmp",
       "nvim-material-icon",
       "nvim-web-devicons",
@@ -106,9 +102,9 @@ function init(use)
         )
       )
     end,
-  }
+  },
 
-  use {
+  {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require("colorizer").setup({
@@ -117,14 +113,15 @@ function init(use)
         html = { names = false; } -- Disable parsing "names" like Blue or Gray
       })
     end,
-  }
+  },
 
   -- We override this with nvim-material-icon, but need it for compatibility
-  use "kyazdani42/nvim-web-devicons"
+  "kyazdani42/nvim-web-devicons",
 
-  use {
+  {
     "DaikyXendo/nvim-material-icon",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
+
     config = function()
       local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
       if not web_devicons_ok then
@@ -143,6 +140,4 @@ function init(use)
       material_icon.setup()
     end,
   }
-end
-
-return { init = init }
+}

@@ -1,8 +1,12 @@
-local function init(use)
-  vim.opt.rtp:append("/opt/homebrew/opt/fzf")
+vim.opt.rtp:append("/opt/homebrew/opt/fzf")
 
-  use {
+return {
+  {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "plenary.nvim",
+      "telescope-fzf-native.nvim",
+    },
 
     config = function()
       local telescope = require("telescope")
@@ -20,17 +24,13 @@ local function init(use)
       vim.keymap.set("n", "<leader>fo", builtin.lsp_outgoing_calls, options)
       vim.keymap.set("n", "<leader>fs", builtin.lsp_workspace_symbols, options)
     end,
+  },
 
-    requires = "plenary.nvim",
-    after = "telescope-fzf-native.nvim",
-  }
-
-  use {
+  {
     "nvim-telescope/telescope-fzf-native.nvim",
-    run = "make",
-  }
+    build = "make",
+  },
 
-  use "xiyaowong/telescope-emoji.nvim"
-end
+  "xiyaowong/telescope-emoji.nvim",
 
-return { init = init }
+}

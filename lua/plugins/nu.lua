@@ -1,19 +1,17 @@
-local function init(use)
-  use({
+return {
+  {
     "LhKipp/nvim-nu",
-    after = {
+    dependencies = {
       "null-ls.nvim",
       "nvim-treesitter",
     },
 
-    run = ":TSInstall nu",
+    build = ":TSInstall nu",
 
     config = function()
       require("nu").setup({
         complete_cmd_names = true,
       })
     end,
-  })
-end
-
-return { init = init }
+  },
+}

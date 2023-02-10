@@ -1,11 +1,13 @@
-local function init(use)
-  use "rust-lang/rust.vim"
-  use "simrat39/rust-tools.nvim"
+return {
+  "rust-lang/rust.vim",
+  "simrat39/rust-tools.nvim",
 
-  use {
+  {
     "saecki/crates.nvim",
-    requires = "plenary.nvim",
-    after = "null-ls.nvim",
+    dependencies = {
+      "plenary.nvim",
+      "null-ls.nvim",
+    },
 
     config = function()
       local crates = require("crates")
@@ -38,7 +40,5 @@ local function init(use)
       vim.keymap.set("n", "<Leader>CD", crates.open_documentation, opts)
       vim.keymap.set("n", "<Leader>CC", crates.open_crates_io, opts)
     end,
+  },
 }
-end
-
-return { init = init }

@@ -1,11 +1,11 @@
-local function init(use)
-  use { "neovim/nvim-lspconfig", }
-  use { "williamboman/mason-lspconfig.nvim", }
-  use { "williamboman/mason.nvim", }
+return {
+  "neovim/nvim-lspconfig",
+  "williamboman/mason-lspconfig.nvim",
+  "williamboman/mason.nvim",
 
-  use {
+  {
     "VonHeikemen/lsp-zero.nvim",
-    requires = {
+    dependencies = {
       -- LSP Support
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
@@ -68,9 +68,9 @@ local function init(use)
         server = lsp_rust
       })
     end
-  }
+  },
 
-  use {
+  {
     "glepnir/lspsaga.nvim",
 
     config = function()
@@ -113,9 +113,9 @@ local function init(use)
         require("lspsaga.diagnostic").goto_next({ severity = diagnostic.severity.ERROR })
       end)
     end,
-  }
+  },
 
-  use {
+  {
     "Maan2003/lsp_lines.nvim",
     config = function()
       require("lsp_lines").setup()
@@ -124,9 +124,9 @@ local function init(use)
         virtual_text = false,
       })
     end,
-  }
+  },
 
-  use {
+  {
     "simrat39/symbols-outline.nvim",
 
     config = function()
@@ -165,7 +165,5 @@ local function init(use)
       local options = { noremap = true, silent = true }
       vim.keymap.set("n", "<Leader>so", "<Cmd>SymbolsOutline<CR>", options)
     end
-  }
-end
-
-return { init = init }
+  },
+}

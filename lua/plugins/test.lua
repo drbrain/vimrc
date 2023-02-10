@@ -1,7 +1,9 @@
-function init(use)
-  use {
+return {
+  "rouge8/neotest-rust",
+
+  {
     "nvim-neotest/neotest",
-    requires = {
+    dependencies = {
       "plenary.nvim",
       "nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
@@ -55,9 +57,5 @@ function init(use)
       vim.keymap.set("n", "<Leader>[t", "<Cmd>lua require('neotest').jump.prev()<CR>", options)
       vim.keymap.set("n", "<Leader>]t", "<Cmd>lua require('neotest').jump.next()<CR>", options)
     end
-  }
-
-  use "rouge8/neotest-rust"
-end
-
-return { init = init }
+  },
+}

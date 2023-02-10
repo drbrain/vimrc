@@ -1,7 +1,7 @@
-function init(use)
-  use {
+return {
+   {
     "sindrets/diffview.nvim",
-    requires = "plenary.nvim",
+    dependencies = "plenary.nvim",
 
     config = function()
       require("diffview").setup({
@@ -16,7 +16,5 @@ function init(use)
         }
       })
     end,
-  }
-end
-
-return { init = init }
+  },
+}

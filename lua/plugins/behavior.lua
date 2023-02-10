@@ -1,7 +1,7 @@
-function init(use)
-  use "godlygeek/tabular"
+return {
+  "godlygeek/tabular",
 
-  use {
+  {
     "junegunn/vim-easy-align",
 
     config = function()
@@ -11,9 +11,9 @@ function init(use)
       -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
       vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", { silent = true })
     end
-  }
+  },
 
-  use {
+  {
     "jinh0/eyeliner.nvim",
 
     config = function()
@@ -21,7 +21,7 @@ function init(use)
         highlight_on_key = true
       })
     end
-  }
+  },
 
   -- normal mode keymaps:
   --
@@ -55,14 +55,11 @@ function init(use)
   --
   -- `gc` - Toggles the region using linewise comment
   -- `gb` - Toggles the region using blockwise comment
-
-  use {
+  {
     "numToStr/Comment.nvim",
 
     config = function()
         require("Comment").setup()
     end
+  },
 }
-end
-
-return { init = init }

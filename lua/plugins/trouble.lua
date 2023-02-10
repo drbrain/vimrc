@@ -1,7 +1,7 @@
-function init(use)
-  use {
+return {
+  {
     "folke/trouble.nvim",
-    requires = {
+    dependencies = {
       "nvim-web-devicons",
       "DaikyXendo/nvim-material-icon",
     },
@@ -21,7 +21,5 @@ function init(use)
       vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
       vim.api.nvim_set_keymap("n", "<leader>xL", "<cmd>Trouble lsp_references<cr>", opts)
     end
-  }
-end
-
-return { init = init }
+  },
+}

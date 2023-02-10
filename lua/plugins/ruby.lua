@@ -1,5 +1,5 @@
-function init(use)
-  use {
+return {
+  {
     "vim-ruby/vim-ruby",
     config = function()
       vim.ruby_no_comment_fold = 1
@@ -12,7 +12,5 @@ function init(use)
       vim.g.ruby_space_errors                = 1
       vim.g.ruby_no_expensive                = 1
     end
-  }
-end
-
-return { init = init }
+  },
+}

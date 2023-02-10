@@ -1,8 +1,10 @@
-local function init(use)
-  use({
+return {
+  "LostNeophyte/null-ls-embedded",
+
+  {
     "jose-elias-alvarez/null-ls.nvim",
-    requires = "plenary.nvim",
-    after = {
+    dependencies = {
+      "plenary.nvim",
       "gitsigns.nvim",
       "null-ls-embedded",
     },
@@ -19,7 +21,6 @@ local function init(use)
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.jq,
           require("null-ls-embedded").nls_source,
-        
       }
 
       null_ls.setup({
@@ -27,9 +28,9 @@ local function init(use)
       })
     end,
 
-  })
+  },
 
-  use {
+  {
     "lewis6991/gitsigns.nvim",
 
     config = function()
@@ -71,15 +72,8 @@ local function init(use)
 
           -- Text object
           map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>")
-  end
- 
+        end
       })
     end
-  }
-
-  use {
-    "LostNeophyte/null-ls-embedded"
-  }
-end
-
-return { init = init }
+  },
+}

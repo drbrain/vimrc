@@ -1,12 +1,10 @@
-function init(use)
-  use {
+return {
+  {
     "folke/todo-comments.nvim",
-    requires = "plenary.nvim",
+    dependencies = "plenary.nvim",
 
     config = function()
       require("todo-comments").setup({})
     end,
-  }
-end
-
-return { init = init }
+  },
+}
