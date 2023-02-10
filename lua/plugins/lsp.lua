@@ -27,6 +27,19 @@ return {
       "simrat39/rust-tools.nvim",
     },
 
+    lazy = false,
+
+    keys = {
+      { "K",     "<Cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover" },
+      { "gd",    "<Cmd>lua vim.lsp.buf.definition()<CR>", desc = "Jump to Definition" },
+      { "gD",    "<Cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Jump to Declaration" },
+      { "gi",    "<Cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Jump to Implementation" },
+      { "gt",    "<Cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Jump to Type Definition" },
+      { "gr",    "<Cmd>lua vim.lsp.buf.references()<CR>", desc = "Jump to references" },
+      { "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "Signature Help" },
+      { "gl",    "<Cmd>lua vim.diagnostic.open_float()<CR>", desc = "Open float" },
+    },
+
     config = function()
       local lsp = require("lsp-zero")
       lsp.preset("recommended")
@@ -40,16 +53,6 @@ return {
           local key_opts = { noremap = true, silent = true }
           vim.api.nvim_buf_set_keymap(bufnr, m, lhs, rhs, key_opts)
         end
-
-        map("n", "K",     "<Cmd>lua vim.lsp.buf.hover()<CR>")
-        map("n", "gd",    "<Cmd>lua vim.lsp.buf.definition()<CR>")
-        map("n", "gD",    "<Cmd>lua vim.lsp.buf.declaration()<CR>")
-        map("n", "gi",    "<Cmd>lua vim.lsp.buf.implementation()<CR>")
-        map("n", "gt",    "<Cmd>lua vim.lsp.buf.type_definition()<CR>")
-        map("n", "gr",    "<Cmd>lua vim.lsp.buf.references()<CR>")
-        map("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>")
-
-        map("n", "gl",    "<Cmd>lua vim.diagnostic.open_float()<CR>")
       end
 
       lsp.on_attach(map_keys_on_attach)
@@ -73,46 +76,45 @@ return {
   {
     "glepnir/lspsaga.nvim",
 
-    config = function()
-      local saga = require("lspsaga")
-      saga.setup({
-        border_style = "rounded",
-        code_action = {
-          num_shortcut = true,
-        },
-        lightbulb = {
-          enable = false,
-        },
-        symbol_in_winbar = {
-          enable = true,
-          in_custom = true,
-        }
-      })
+    lazy = false,
 
-      local diagnostic = vim.diagnostic
-      local map = vim.keymap.set
-      map("n", "<Leader>rn", "<Cmd>Lspsaga rename<CR>")
+    keys = {
+      { "<Leader>rn", "<Cmd>Lspsaga rename<CR>", desc = "Rename Symbol" },
 
-      map("n", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>")
-      map("v", "<Leader>ca", "<Cmd>Lspsaga code_action<CR>")
+      { "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", desc = "Code Action" },
+      { "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", mode = "v", desc = "Code Action" },
 
-      map("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
-      map("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+      { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", desc = "Incoming Calls" },
+      { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", desc = "Outgoing Calls" },
 
-      map("n", "<Leader>sl", "<Cmd>Lspsaga show_line_diagnostics<CR>")
-      map("n", "<Leader>sc", "<Cmd>Lspsaga show_cursor_diagnostics<CR>")
-      map("n", "<Leader>sb", "<Cmd>Lspsaga show_buf_diagnostics<CR>")
+      { "<Leader>sl", "<Cmd>Lspsaga show_line_diagnostics<CR>", desc = "Line Diagnostics" },
+      { "<Leader>sc", "<Cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Cursor Diagnostics" },
+      { "<Leader>sb", "<Cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Buffer Diagnostics" },
 
-      map("n", "[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
-      map("n", "]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>")
+      { "[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Previous Diagnostic" },
+      { "]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next Diagnostic" },
 
-      map("n", "[E", function()
-        require("lspsaga.diagnostic").goto_prev({ severity = diagnostic.severity.ERROR })
-      end)
-      map("n", "]E", function()
-        require("lspsaga.diagnostic").goto_next({ severity = diagnostic.severity.ERROR })
-      end)
-    end,
+      { "[E", function()
+        require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+      end, desc = "Previous Error" },
+      { "]E", function()
+        require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+      end, desc = "Next Error" },
+    },
+
+    opts = {
+      border_style = "rounded",
+      code_action = {
+        num_shortcut = true,
+      },
+      lightbulb = {
+        enable = false,
+      },
+      symbol_in_winbar = {
+        enable = true,
+        in_custom = true,
+      }
+    },
   },
 
   {
@@ -129,41 +131,40 @@ return {
   {
     "simrat39/symbols-outline.nvim",
 
-    config = function()
-      require("symbols-outline").setup({
-        auto_close = true,
-        symbols = {
-          File          = { icon = "" },
-          Module        = { icon = "" },
-          Namespace     = { icon = "" },
-          Package       = { icon = "" },
-          Class         = { icon = "𝓒" },
-          Method        = { icon = "ƒ" },
-          Property      = { icon = "" },
-          Field         = { icon = "" },
-          Constructor   = { icon = "" },
-          Enum          = { icon = "ℰ" },
-          Interface     = { icon = "ﰮ" },
-          Function      = { icon = "ﬦ" },
-          Variable      = { icon = "" },
-          Constant      = { icon = "" },
-          String        = { icon = "𝓐" },
-          Number        = { icon = "#" },
-          Boolean       = { icon = "⊨" },
-          Array         = { icon = "" },
-          Object        = { icon = "⦿" },
-          Key           = { icon = "" },
-          Null          = { icon = "ﳠ" },
-          EnumMember    = { icon = "" },
-          Struct        = { icon = "𝓢" },
-          Event         = { icon = "" },
-          Operator      = { icon = "+" },
-          TypeParameter = { icon = "𝙏" }
-        }
-      })
+    keys = {
+      { "<Leader>so", "<Cmd>SymbolsOutline<CR>", desc = "Symbol Outline" },
+    },
 
-      local options = { noremap = true, silent = true }
-      vim.keymap.set("n", "<Leader>so", "<Cmd>SymbolsOutline<CR>", options)
-    end
+    opts = {
+      auto_close = true,
+      symbols = {
+        File          = { icon = "" },
+        Module        = { icon = "" },
+        Namespace     = { icon = "" },
+        Package       = { icon = "" },
+        Class         = { icon = "𝓒" },
+        Method        = { icon = "ƒ" },
+        Property      = { icon = "" },
+        Field         = { icon = "" },
+        Constructor   = { icon = "" },
+        Enum          = { icon = "ℰ" },
+        Interface     = { icon = "ﰮ" },
+        Function      = { icon = "ﬦ" },
+        Variable      = { icon = "" },
+        Constant      = { icon = "" },
+        String        = { icon = "𝓐" },
+        Number        = { icon = "#" },
+        Boolean       = { icon = "⊨" },
+        Array         = { icon = "" },
+        Object        = { icon = "⦿" },
+        Key           = { icon = "" },
+        Null          = { icon = "ﳠ" },
+        EnumMember    = { icon = "" },
+        Struct        = { icon = "𝓢" },
+        Event         = { icon = "" },
+        Operator      = { icon = "+" },
+        TypeParameter = { icon = "𝙏" }
+      }
+    },
   },
 }

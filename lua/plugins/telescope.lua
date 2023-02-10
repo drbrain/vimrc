@@ -25,7 +25,7 @@ return {
       { "<Leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<Leader>fr", "<Cmd>Telescope oldfiles<CR>", desc = "Recent" },
       { "<Leader>fi", Util.telescope("lsp_incoming_calls"), desc = "Incoming Calls" },
-      { "<Leader>fo", Util.telescope("lsp_outgoing_calls"), desc = "Incoming Calls" },
+      { "<Leader>fo", Util.telescope("lsp_outgoing_calls"), desc = "Outgoing Calls" },
       -- git
       { "<Leader>gc", "<Cmd>Telescope git_commits<CR>", desc = "Commits" },
       { "<Leader>gs", "<Cmd>Telescope git_status<CR>", desc = "Status" },
@@ -42,7 +42,7 @@ return {
       { "<Leader>sk", "<Cmd>Telescope keymaps<CR>", desc = "Key Maps" },
       { "<Leader>sM", "<Cmd>Telescope man_pages<CR>", desc = "Man Pages" },
       { "<Leader>sm", "<Cmd>Telescope marks<CR>", desc = "Jump to Mark" },
-      { "<Leader>so", "<Cmd>Telescope vim_options<CR>", desc = "Options" },
+      { "<Leader>sO", "<Cmd>Telescope vim_options<CR>", desc = "Options" },
       { "<Leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
       { "<Leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
       { "<Leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
