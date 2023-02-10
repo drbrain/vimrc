@@ -1,42 +1,56 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    version = false,
 
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
+    build = ":TSUpdate",
 
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          "c",
-          "lua",
-          "nu",
-          "rust",
+    event = {
+      "BufReadPost",
+      "BufNewFile",
+    },
+
+    keys = {
+      { "gnn", desc = "Increment selection" },
+      { "grm", desc = "Shrink selection", mode = "x" },
+    },
+
+    opts = {
+      auto_install = true,
+      context_commentstring = { enable = true, enable_autocmd = false },
+      ensure_installed = {
+        "c",
+        "help",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "nu",
+        "regex",
+        "rust",
+        "vim",
+        "yaml",
+      },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
         },
+      },
+      indent = {
+        enable = true,
+      },
+    },
 
-        auto_install = true,
-
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          enable = true,
-        },
-
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
-      })
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
 
       vim.o.foldmethod = "expr"
       vim.o.foldexpr = "nvim_treesitter#foldexpr()"

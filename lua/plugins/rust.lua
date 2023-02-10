@@ -1,6 +1,13 @@
 return {
-  "rust-lang/rust.vim",
   "simrat39/rust-tools.nvim",
+
+  {
+    "rust-lang/rust.vim",
+
+    config = function()
+      vim.g.rustfmt_autosave = 1
+    end
+  },
 
   {
     "saecki/crates.nvim",
