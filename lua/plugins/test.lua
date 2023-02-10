@@ -11,9 +11,19 @@ return {
       "neotest-rust",
     },
 
+    keys = {
+      { "<Leader>tn", "<Cmd>lua require('neotest').run.run()<CR>", desc = "Run nearest test" },
+      { "<Leader>tf", "<Cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", desc = "Run all tests" },
+      { "<Leader>tS", "<Cmd>lua require('neotest').run.stop()<CR>", desc = "Stop tests" },
+      { "<Leader>tA", "<Cmd>lua require('neotest').run.attach()<CR>", desc = "Attach to a test" },
+      { "<Leader>ts", "<Cmd>lua require('neotest').summary.toggle()<CR>", desc = "Toggle test summary" },
+      { "<Leader>to", "<Cmd>lua require('neotest').output.open()<CR>", desc = "Show test output" },
+      { "<Leader>[t", "<Cmd>lua require('neotest').jump.prev()<CR>", desc = "Next failed test" },
+      { "<Leader>]t", "<Cmd>lua require('neotest').jump.next()<CR>", desc = "Previous failed test" },
+    },
+
     config = function()
-      local neotest = require("neotest")
-      neotest.setup({
+      require("neotest").setup({
         adapters = {
           require("neotest-rust")
         },
@@ -39,23 +49,6 @@ return {
           unknown = "ﬤ",
         },
       })
-
-      local options = { noremap = true }
-      -- test running
-      vim.keymap.set("n", "<Leader>tn", "<Cmd>lua require('neotest').run.run()<CR>", options)
-      vim.keymap.set("n", "<Leader>tf", "<Cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", options)
-      vim.keymap.set("n", "<Leader>tS", "<Cmd>lua require('neotest').run.stop()<CR>", options)
-      vim.keymap.set("n", "<Leader>tA", "<Cmd>lua require('neotest').run.attach()<CR>", options)
-
-      -- toggle summary
-      vim.keymap.set("n", "<Leader>ts", "<Cmd>lua require('neotest').summary.toggle()<CR>", options)
-
-      -- show output
-      vim.keymap.set("n", "<Leader>to", "<Cmd>lua require('neotest').output.open()<CR>", options)
-
-      -- jump
-      vim.keymap.set("n", "<Leader>[t", "<Cmd>lua require('neotest').jump.prev()<CR>", options)
-      vim.keymap.set("n", "<Leader>]t", "<Cmd>lua require('neotest').jump.next()<CR>", options)
     end
   },
 }
