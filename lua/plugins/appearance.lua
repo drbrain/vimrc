@@ -4,17 +4,19 @@ return {
   "NLKNguyen/papercolor-theme",
   {
     "folke/tokyonight.nvim",
+    lazy = true,
 
-    config = function()
+    opts = {
+      style = "night",
+      on_colors = function(colors)
+        colors.bg = "#13151F"
+        colors.bg_dark = "#0F1119"
+      end
+    },
+    config = function(_, opts)
       vim.o.background = "dark"
 
-      require("tokyonight").setup({
-        style = "night",
-        on_colors = function(colors)
-          colors.bg = "#13151F"
-          colors.bg_dark = "#0F1119"
-        end
-      })
+      require("tokyonight").setup(opts)
 
       vim.cmd[[colorscheme tokyonight-night]]
 

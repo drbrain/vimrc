@@ -17,7 +17,10 @@ return {
 
     opts = {
       auto_install = true,
-      context_commentstring = { enable = true, enable_autocmd = false },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false
+      },
       ensure_installed = {
         "c",
         "help",
@@ -58,6 +61,9 @@ return {
     end,
   },
 
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+  },
   -- Disabled due to https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/317
   -- {
   --   "nvim-treesitter/nvim-treesitter-textobjects",
