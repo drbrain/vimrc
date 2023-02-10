@@ -8,10 +8,8 @@ return {
 
     build = ":TSInstall nu",
 
-    config = function()
-      require("nu").setup({
-        complete_cmd_names = true,
-      })
-    end,
+    opts = {
+      complete_cmd_names = true,
+    },
   },
 }
