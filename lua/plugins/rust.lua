@@ -1,8 +1,14 @@
 return {
-  "simrat39/rust-tools.nvim",
+  {
+    "simrat39/rust-tools.nvim",
+
+    event = "FileType rust",
+  },
 
   {
     "rust-lang/rust.vim",
+
+    event = "FileType rust",
 
     config = function()
       vim.g.rustfmt_autosave = 1

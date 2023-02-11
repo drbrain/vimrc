@@ -31,6 +31,8 @@ return {
   {
     "jinh0/eyeliner.nvim",
 
+    event = "VeryLazy",
+
     opts = {
       highlight_on_key = true,
     },
@@ -71,11 +73,11 @@ return {
   {
     "numToStr/Comment.nvim",
     dependencies = {
-      "nvim-ts-context-commentstring",
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
 
     event = {
-      "BufEnter",
+      "BufNewFile",
       "BufReadPre",
     },
 

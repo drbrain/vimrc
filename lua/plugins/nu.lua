@@ -7,8 +7,7 @@ return {
     },
 
     event = {
-      "BufReadPre *.nu",
-      "BufEnter *.nu",
+      "FileType nu",
     },
 
     build = ":TSInstall nu",

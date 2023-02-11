@@ -1,6 +1,4 @@
 return {
-  "rouge8/neotest-rust",
-
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -8,7 +6,7 @@ return {
       "nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       -- test adapters follow
-      "neotest-rust",
+      "rouge8/neotest-rust",
     },
 
     keys = {
@@ -22,8 +20,8 @@ return {
       { "<Leader>]t", "<Cmd>lua require('neotest').jump.next()<CR>", desc = "Previous failed test" },
     },
 
-    config = function()
-      require("neotest").setup({
+    opt = function ()
+      return {
         adapters = {
           require("neotest-rust")
         },
@@ -48,7 +46,7 @@ return {
           skipped = "",
           unknown = "ﬤ",
         },
-      })
-    end
+      }
+    end,
   },
 }

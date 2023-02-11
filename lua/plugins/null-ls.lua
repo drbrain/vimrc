@@ -1,9 +1,8 @@
 return {
-  "LostNeophyte/null-ls-embedded",
-
   {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = {
+      "LostNeophyte/null-ls-embedded",
       "mason.nvim",
     },
 
@@ -21,6 +20,7 @@ return {
           null_ls.builtins.diagnostics.zsh,
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.jq,
+          require("null-ls-embedded").nls_source,
         },
       }
     end,

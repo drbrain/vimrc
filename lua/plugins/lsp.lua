@@ -1,6 +1,12 @@
 return {
-  "neovim/nvim-lspconfig",
-  "williamboman/mason-lspconfig.nvim",
+  {
+    "neovim/nvim-lspconfig",
+
+    event = {
+      "BufNewFile",
+      "BufReadPre",
+    },
+  },
 
   {
     "williamboman/mason.nvim",
@@ -56,7 +62,7 @@ return {
     },
 
     event = {
-      "BufEnter",
+      "BufNewFile",
       "BufReadPre",
     },
 
@@ -108,10 +114,9 @@ return {
     "glepnir/lspsaga.nvim",
 
     event = {
-      "BufEnter",
+      "BufNewFile",
       "BufReadPre",
     },
-
 
     keys = {
       { "<Leader>rn", "<Cmd>Lspsaga rename<CR>", desc = "Rename Symbol" },
@@ -154,6 +159,12 @@ return {
 
   {
     "Maan2003/lsp_lines.nvim",
+
+    event = {
+      "BufNewFile",
+      "BufReadPre",
+    },
+
     config = function()
       require("lsp_lines").setup()
 

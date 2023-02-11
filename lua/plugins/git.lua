@@ -1,4 +1,4 @@
 return {
-    "tpope/vim-fugitive",
-    "ruanyl/vim-gh-line",
+  { "tpope/vim-fugitive", event = "VeryLazy" },
+  { "ruanyl/vim-gh-line", event = "VeryLazy" },
 }

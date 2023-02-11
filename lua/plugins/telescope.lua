@@ -9,6 +9,7 @@ return {
     dependencies = {
       "plenary.nvim",
       "telescope-fzf-native.nvim",
+      "xiyaowong/telescope-emoji.nvim",
     },
 
     cmd = "Telescope",
@@ -103,7 +104,7 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
+    event = "VeryLazy",
   },
 
-  "xiyaowong/telescope-emoji.nvim",
 }

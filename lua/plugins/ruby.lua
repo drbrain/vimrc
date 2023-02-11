@@ -1,6 +1,9 @@
 return {
   {
     "vim-ruby/vim-ruby",
+
+    event = "FileType ruby",
+
     config = function()
       vim.ruby_no_comment_fold = 1
 

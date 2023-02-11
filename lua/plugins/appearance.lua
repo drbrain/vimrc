@@ -1,7 +1,12 @@
 vim.opt.termguicolors = true
 
 return {
-  "NLKNguyen/papercolor-theme",
+  {
+    "NLKNguyen/papercolor-theme",
+
+    lazy = true,
+  },
+
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -83,6 +88,8 @@ return {
       "nvim-web-devicons",
     },
 
+    event = "VeryLazy",
+
     config = function()
       local wilder = require("wilder")
       wilder.setup({modes = {":", "/", "?"}})
@@ -112,6 +119,11 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
 
+    event = {
+      "BufNewFile",
+      "BufReadPre",
+    },
+
     opts = {
       "*"; -- Highlight all files, but customize some others.
       css = { rgb_fn = true; }; -- Enable parsing rgb(...) functions in css.
@@ -120,11 +132,17 @@ return {
   },
 
   -- We override this with nvim-material-icon, but need it for compatibility
-  "kyazdani42/nvim-web-devicons",
+  {
+    "kyazdani42/nvim-web-devicons",
+
+    event = "VeryLazy",
+  },
 
   {
     "DaikyXendo/nvim-material-icon",
     dependencies = "kyazdani42/nvim-web-devicons",
+
+    event = "VeryLazy",
 
     config = function()
       local web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
