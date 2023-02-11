@@ -6,6 +6,11 @@ return {
       "nvim-treesitter",
     },
 
+    event = {
+      "BufReadPre *.nu",
+      "BufEnter *.nu",
+    },
+
     build = ":TSInstall nu",
 
     opts = {
