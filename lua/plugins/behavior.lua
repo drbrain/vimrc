@@ -1,4 +1,25 @@
 return {
+ {
+    {
+      "folke/which-key.nvim",
+
+      event = "VeryLazy",
+
+      opts = {
+        window = {
+          border = "single",
+          padding = { 0, 0, 0, 0 },
+        },
+      },
+
+      config = function(_, opts)
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup(opts)
+      end,
+    },
+  },
+
   {
     "godlygeek/tabular",
 
@@ -28,6 +49,7 @@ return {
     },
   },
 
+  -- Help with f and t jumps
   {
     "jinh0/eyeliner.nvim",
 
