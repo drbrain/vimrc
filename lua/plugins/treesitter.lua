@@ -10,11 +10,6 @@ return {
       "BufNewFile",
     },
 
-    keys = {
-      { "gnn", desc = "Increment selection" },
-      { "grm", desc = "Shrink selection", mode = "x" },
-    },
-
     opts = {
       auto_install = true,
       context_commentstring = {
