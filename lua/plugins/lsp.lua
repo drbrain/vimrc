@@ -55,7 +55,10 @@ return {
       "simrat39/rust-tools.nvim",
     },
 
-    lazy = false,
+    event = {
+      "BufEnter",
+      "BufReadPre",
+    },
 
     keys = {
       { "K",     "<Cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover" },
@@ -104,7 +107,11 @@ return {
   {
     "glepnir/lspsaga.nvim",
 
-    lazy = false,
+    event = {
+      "BufEnter",
+      "BufReadPre",
+    },
+
 
     keys = {
       { "<Leader>rn", "<Cmd>Lspsaga rename<CR>", desc = "Rename Symbol" },
