@@ -16,36 +16,33 @@ return {
       "null-ls.nvim",
     },
 
-    config = function()
-      local crates = require("crates")
+    keys = {
+      { "<Leader>Ct", "<Cmd> lua require(\"crates\").toggle<CR>", desc = "Toggle Crates" },
+      { "<Leader>Cr", "<Cmd> lua require(\"crates\").reload<CR>", desc = "Reload Crates" },
 
-      crates.setup({
-        null_ls = {
-          enabled = true,
-          name = "crates.nvim",
-        },
-      })
+      { "<Leader>Cv", "<Cmd> lua require(\"crates\").show_versions_popup<CR>", desc = "Show Crate Versions" },
+      { "<Leader>Cf", "<Cmd> lua require(\"crates\").show_features_popup<CR>", desc = "Show Crate Features" },
+      { "<Leader>Cd", "<Cmd> lua require(\"crates\").show_dependencies_popup<CR>", desc = "Show Crate Dependencies" },
 
-      local opts = { noremap = true, silent = true }
+      { "<Leader>Cu", "<Cmd> lua require(\"crates\").update_crate<CR>", desc = "Update Crate" },
+      { "<Leader>Cu", "<Cmd> lua require(\"crates\").update_crates<CR>", mode = "v", desc = "Update Crates" },
+      { "<Leader>Ca", "<Cmd> lua require(\"crates\").update_all_crates<CR>", desc = "Update All Crates" },
 
-      vim.keymap.set("n", "<Leader>Ct", crates.toggle, opts)
-      vim.keymap.set("n", "<Leader>Cr", crates.reload, opts)
+      { "<Leader>CU", "<Cmd> lua require(\"crates\").upgrade_crate<CR>", desc = "Upgrade Crate" },
+      { "<Leader>CU", "<Cmd> lua require(\"crates\").upgrade_crates<CR>", mode = "v", desc = "Upgrade Crates" },
+      { "<Leader>CA", "<Cmd> lua require(\"crates\").upgrade_all_crates<CR>", desc = "Upgrade All Crates" },
 
-      vim.keymap.set("n", "<Leader>Cv", crates.show_versions_popup, opts)
-      vim.keymap.set("n", "<Leader>Cf", crates.show_features_popup, opts)
-      vim.keymap.set("n", "<Leader>Cd", crates.show_dependencies_popup, opts)
+      { "<Leader>CH", "<Cmd> lua require(\"crates\").open_homepage<CR>", desc = "Open Crate Homepage" },
+      { "<Leader>CR", "<Cmd> lua require(\"crates\").open_repository<CR>", desc = "Open Crate Repository" },
+      { "<Leader>CD", "<Cmd> lua require(\"crates\").open_documentation<CR>", desc = "Open Crate Documentation" },
+      { "<Leader>CC", "<Cmd> lua require(\"crates\").open_crates_io<CR>", desc = "Open crates.io" },
+    },
 
-      vim.keymap.set("n", "<Leader>Cu", crates.update_crate, opts)
-      vim.keymap.set("v", "<Leader>Cu", crates.update_crates, opts)
-      vim.keymap.set("n", "<Leader>Ca", crates.update_all_crates, opts)
-      vim.keymap.set("n", "<Leader>CU", crates.upgrade_crate, opts)
-      vim.keymap.set("v", "<Leader>CU", crates.upgrade_crates, opts)
-      vim.keymap.set("n", "<Leader>CA", crates.upgrade_all_crates, opts)
-
-      vim.keymap.set("n", "<Leader>CH", crates.open_homepage, opts)
-      vim.keymap.set("n", "<Leader>CR", crates.open_repository, opts)
-      vim.keymap.set("n", "<Leader>CD", crates.open_documentation, opts)
-      vim.keymap.set("n", "<Leader>CC", crates.open_crates_io, opts)
-    end,
+    opts = {
+      null_ls = {
+        enabled = true,
+        name = "crates.nvim",
+      },
+    }
   },
 }
