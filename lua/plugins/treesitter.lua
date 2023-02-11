@@ -63,6 +63,11 @@ return {
 
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
+
+    event = {
+      "BufEnter",
+      "BufReadPre",
+    },
   },
   -- Disabled due to https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/317
   -- {
