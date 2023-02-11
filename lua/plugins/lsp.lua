@@ -1,7 +1,35 @@
 return {
   "neovim/nvim-lspconfig",
   "williamboman/mason-lspconfig.nvim",
-  "williamboman/mason.nvim",
+
+  {
+    "williamboman/mason.nvim",
+
+    cmd = "Mason",
+    keys = {
+      { "<Leader>cm", "<Cmd>Mason<CR>", desc = "Mason" }
+    },
+
+    opts = {
+      ensure_installed = {
+        "rust-analyzer",
+        "rustfmt",
+        "stylua",
+      },
+    },
+
+    ---@param opts MasonSettings | {ensure_installed: string[]}
+    config = function(_, opts)
+      require("mason").setup(opts)
+      local mr = require("mason-registry")
+      for _, tool in ipairs(opts.ensure_installed) do
+        local p = mr.get_package(tool)
+        if not p:is_installed() then
+          p:install()
+        end
+      end
+    end,
+  },
 
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -91,12 +119,12 @@ return {
       { "<Leader>sc", "<Cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Cursor Diagnostics" },
       { "<Leader>sb", "<Cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Buffer Diagnostics" },
 
-      { "[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Previous Diagnostic" },
+      { "[e", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Prev Diagnostic" },
       { "]e", "<Cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next Diagnostic" },
 
       { "[E", function()
         require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-      end, desc = "Previous Error" },
+      end, desc = "Prev Error" },
       { "]E", function()
         require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
       end, desc = "Next Error" },
