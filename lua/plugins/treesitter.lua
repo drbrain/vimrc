@@ -56,46 +56,83 @@ return {
     end,
   },
 
-  -- Disabled due to https://github.com/nvim-treesitter/nvim-treesitter-textobjects/pull/317
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   dependencies = "nvim-treesitter",
-  --
-  --   config = function()
-  --     require("nvim-treesitter.configs").setup({
-  --       textobjects = {
-  --         select = {
-  --           enable = true,
-  --           lookahead = true,
-  --           include_surrounding_whitespace = false,
-  --
-  --           keymaps = {
-  --             -- You can use the capture groups defined in textobjects.scm
-  --             ["af"] = { query = "@function.outer", desc = "select around a function" },
-  --             ["if"] = { query = "@function.inner", desc = "select inner part of a function" },
-  --             ["ac"] = { query = "@class.outer", desc = "select around a class" },
-  --             ["ic"] = { query = "@class.inner", desc = "select inner part of a class" },
-  --           },
-  --           selection_modes = {
-  --             ["@parameter.outer"] = "v", -- charwise
-  --             ["@function.outer"] = "V", -- linewise
-  --             ["@class.outer"] = "<c-v>", -- blockwise
-  --           },
-  --           move = {
-  --             enable = true,
-  --             set_jumps = true,
-  --             goto_next_start = {
-  --               ["]]"] = "@function.outer",
-  --               ["]\\"] = "@class.outer",
-  --             },
-  --             goto_previous_start = {
-  --               ["[["] = "@function.outer",
-  --               ["[\\"] = "@class.outer",
-  --             },
-  --           },
-  --         },
-  --       },
-  --     })
-  --   end
-  -- }
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter",
+
+    event = "VeryLazy",
+
+    opts = {
+      textobjects = {
+        lsp_interop = {
+          enable = true,
+          border = "single",
+          floating_preview_opts = {},
+          peek_definition_code = {
+            ["<Leader>df"] = { query = "@function.outer", desc = "Show Surrounding Function" },
+            ["<Leader>dF"] = { query = "@class.outer",    desc = "Show Surrounding Class" },
+          },
+        },
+
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            ["]m"] = { query = "@function.outer", desc = "Next Function Start" },
+            ["]]"] = { query = "@class.outer",    desc = "Next Class Start" },
+            ["]o"] = { query = "@loop.*",         desc = "Next Loop" },
+            ["]s"] = { query = "@scope",          query_group = "locals", desc = "Next Scope" },
+            ["]z"] = { query = "@fold",           query_group = "folds",  desc = "Next Fold" },
+          },
+          goto_next_end = {
+            ["]M"] = { query = "@function.outer", desc = "Next Function End" },
+            ["]["] = { query = "@class.outer",    desc = "Next Class End" },
+            ["]O"] = { query = "@loop.*",         desc = "Next Loop" },
+            ["]S"] = { query = "@scope",          query_group = "locals", desc = "Next Scope" },
+            ["]Z"] = { query = "@fold",           query_group = "folds",  desc = "Next Fold" },
+          },
+          goto_previous_start = {
+            ["[m"] = { query = "@function.outer", desc = "Prev Function Start" },
+            ["[["] = { query = "@class.outer",    desc = "Prev Class Start" },
+            goto_previous_end = {
+              ["[M"] = { query = "@function.outer", desc = "Prev Function End" },
+              ["[]"] = { query = "@class.outer",    desc = "Prev Class End" },
+            },
+            -- Below will go to either the start or the end, whichever is closer.
+            -- Use if you want more granular movements
+            -- Make it even more gradual by adding multiple queries and regex.
+            goto_next = {
+              ["]i"] = { query = "@conditional.outer", desc = "Next Conditional" },
+            },
+            goto_previous = {
+              ["[i"] = { query = "@conditional.outer", desc = "Prev Conditional" },
+            }
+          },
+
+          select = {
+            enable = true,
+            lookahead = true,
+            include_surrounding_whitespace = false,
+
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["af"] = { query = "@function.outer", desc = "Select Around a Function" },
+              ["if"] = { query = "@function.inner", desc = "Select Inner Part of a Function" },
+              ["ac"] = { query = "@class.outer", desc = "Select Around a Class" },
+              ["ic"] = { query = "@class.inner", desc = "Select Inner Part of a Class" },
+            },
+            selection_modes = {
+              ["@parameter.outer"] = "v", -- charwise
+              ["@function.outer"] = "V", -- linewise
+              ["@class.outer"] = "<c-v>", -- blockwise
+            },
+          },
+        },
+      },
+    },
+
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end
+  }
 }
