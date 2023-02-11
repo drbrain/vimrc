@@ -13,6 +13,7 @@ return {
         colors.bg_dark = "#0F1119"
       end
     },
+
     config = function(_, opts)
       vim.o.background = "dark"
 
@@ -52,25 +53,26 @@ return {
       "nvim-web-devicons",
       "tokyonight.nvim",
     },
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "tokyonight"
-        },
-        sections = {
-          lualine_x = {
-            {
-              "filetype",
-              icon_only = true,
-            }
-          },
-          lualine_z = {
-            "%B",
-            "location",
+
+    event = "VeryLazy",
+
+    opts = {
+      options = {
+        theme = "tokyonight"
+      },
+      sections = {
+        lualine_x = {
+          {
+            "filetype",
+            icon_only = true,
           }
+        },
+        lualine_z = {
+          "%B",
+          "location",
         }
-      })
-    end,
+      }
+    },
   },
 
   {
@@ -80,6 +82,7 @@ return {
       "nvim-material-icon",
       "nvim-web-devicons",
     },
+
     config = function()
       local wilder = require("wilder")
       wilder.setup({modes = {":", "/", "?"}})
