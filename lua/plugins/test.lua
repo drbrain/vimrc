@@ -20,7 +20,7 @@ return {
       { "<Leader>]t", "<Cmd>lua require('neotest').jump.next()<CR>", desc = "Previous failed test" },
     },
 
-    opt = function ()
+    opts = function ()
       return {
         adapters = {
           require("neotest-rust")
