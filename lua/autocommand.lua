@@ -12,7 +12,7 @@ local augroup = function(name)
   vim.api.nvim_create_augroup(name, { clear = true })
 end
 
-aucmd("FileType", "text",   "setlocal tw=78, spell")
+aucmd("FileType", "text",   "setlocal tw=78 spell")
 aucmd("BufRead",  "*.rdoc", "setlocal tw=78 spell")
 
 aucmd("BufRead", { "*.rake", "*.rf", "*.ffi", }, "setlocal filetype=ruby")
