@@ -158,6 +158,24 @@ return {
   },
 
   {
+    "j-hui/fidget.nvim",
+
+    event = {
+      "LspAttach",
+    },
+
+    opts = {
+      text = {
+        spinner = "moon",
+      },
+      window = {
+        blend = 10,
+        border = "rounded",
+      }
+    },
+  },
+
+  {
     "Maan2003/lsp_lines.nvim",
 
     event = {

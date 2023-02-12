@@ -11,6 +11,7 @@
   "crates.nvim": { "branch": "main", "commit": "3fc7ddac13ddf65914a733ef074317c4c72ef05b" },
   "diffview.nvim": { "branch": "main", "commit": "11827d46e939b4748dbdb7e0df4982a63bd59d26" },
   "eyeliner.nvim": { "branch": "main", "commit": "e1df20beed2560914492db95ee7675d44c4ce96f" },
+  "fidget.nvim": { "branch": "main", "commit": "9dc6d15fdb877b2fb09ea0ba2dfde9beccb5965a" },
   "friendly-snippets": { "branch": "main", "commit": "80597f3ea824946c87fd29f82b5ed4f24ef473f3" },
   "gitsigns.nvim": { "branch": "main", "commit": "f29f0b22fd66c910b892aae3bc18a4872c002738" },
   "lazy.nvim": { "branch": "main", "commit": "bab744565e9d8d743b1889c66707aa2e8018ae86" },
