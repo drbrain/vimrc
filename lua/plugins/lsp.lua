@@ -18,7 +18,6 @@ return {
 
     opts = {
       ensure_installed = {
-        "rust-analyzer",
         "rustfmt",
         "stylua",
       },
@@ -81,23 +80,16 @@ return {
       local lsp = require("lsp-zero")
       lsp.preset("recommended")
 
+      lsp.ensure_installed({
+        "rust_analyzer",
+      })
+
       lsp.set_preferences({
         set_lsp_keymaps = false,
       })
 
-      local map_keys_on_attach = function(_, bufnr)
-        local map = function(m, lhs, rhs)
-          local key_opts = { noremap = true, silent = true }
-          vim.api.nvim_buf_set_keymap(bufnr, m, lhs, rhs, key_opts)
-        end
-      end
-
-      lsp.on_attach(map_keys_on_attach)
-
       -- https://github.com/VonHeikemen/lsp-zero.nvim/discussions/5
-      local lsp_rust = lsp.build_options("rust_analyzer", {
-        on_attach = map_keys_on_attach,
-      })
+      local lsp_rust = lsp.build_options("rust_analyzer", {})
 
       -- Configure lua language server for neovim
       lsp.nvim_workspace()
