@@ -91,8 +91,9 @@ return {
       -- https://github.com/VonHeikemen/lsp-zero.nvim/discussions/5
       local lsp_rust = lsp.build_options("rust_analyzer", {})
 
-      -- Configure lua language server for neovim
-      lsp.nvim_workspace()
+      lsp.nvim_workspace({
+        library = vim.api.nvim_get_runtime_file('', true)
+      })
 
       lsp.setup()
 
