@@ -106,6 +106,10 @@ return {
   {
     "glepnir/lspsaga.nvim",
 
+    dependencies = {
+      "gitsigns.nvim",
+    },
+
     event = {
       "BufNewFile",
       "BufReadPre",
