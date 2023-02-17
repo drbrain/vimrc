@@ -13,6 +13,11 @@ return {
       "DiffviewToggleFiles",
     },
 
+    keys = {
+      { "<Leader>DO", "<Cmd>:DiffviewOpen<CR>", desc = "Open diff view" },
+      { "<Leader>DC", "<Cmd>:DiffviewClose<CR>", desc = "Close diff view" },
+    },
+
     opts = {
       enhanced_diff_hl = true,
       view = {
