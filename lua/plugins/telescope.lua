@@ -69,8 +69,19 @@ return {
 
     opts = {
       defaults = {
-        prompt_prefix = " ",
-        selection_caret = " ",
+        layout_strategy = "vertical",
+        layout_config = {
+          preview_height = 0.7,
+          preview_cutoff = 5,
+          height = {
+            padding = 1,
+          },
+          width = {
+            0.7,
+            max = 100,
+            min = 75,
+          },
+        },
         mappings = {
           i = {
             ["<C-t>"] = function(...)
@@ -90,11 +101,15 @@ return {
             end,
           },
         },
+        prompt_prefix = " ",
+        selection_caret = " ",
       }
     },
 
-    config = function()
+    config = function(_, opts)
       local telescope = require("telescope")
+
+      telescope.setup(opts)
 
       telescope.load_extension("emoji")
       telescope.load_extension("fzf")
