@@ -14,8 +14,10 @@ return {
     },
 
     keys = {
-      { "<Leader>DO", "<Cmd>:DiffviewOpen<CR>", desc = "Open diff view" },
-      { "<Leader>DC", "<Cmd>:DiffviewClose<CR>", desc = "Close diff view" },
+      { "<Leader>Dc", "<Cmd>:DiffviewClose<CR>", desc = "Close diff view" },
+      { "<Leader>Df", "<Cmd>:DiffviewFocusFiles<CR>", desc = "Focus diff view files" },
+      { "<Leader>Do", "<Cmd>:DiffviewOpen<CR>", desc = "Open diff view" },
+      { "<Leader>Dt", "<Cmd>:DiffviewToggleFiles<CR>", desc = "Toggle diff view files" },
     },
 
     opts = {
