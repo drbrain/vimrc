@@ -60,6 +60,19 @@ return {
     },
   },
 
+  {
+    "kevinhwang91/nvim-hlslens",
+
+    keys = {
+      { "n", [[<Cmd>execute("normal! " . v:count1 . "n")<CR><Cmd>lua require("hlslens").start()<CR>]], desc = "Repeat last search" },
+      { "N", [[<Cmd>execute("normal! " . v:count1 . "N")<CR><Cmd>lua require("hlslens").start()<CR>]], desc = "Repeat last search in the opposite direction" },
+      { "*", [[*<Cmd>lua require("hlslens").start()<CR>]], desc = "Search forward for the cursor word" },
+      { "#", [[#<Cmd>lua require("hlslens").start()<CR>]], desc = "Search backward for the cursor word" },
+      { "g*", [[g*<Cmd>lua require("hlslens").start()<CR>]], desc = "Search forward for the cursor text" },
+      { "g#", [[g#<Cmd>lua require("hlslens").start()<CR>]], desc = "Search backward for the cursor text" },
+    }
+  },
+
   -- normal mode keymaps:
   --
   -- `gcc` - Toggles the current line using linewise comment
