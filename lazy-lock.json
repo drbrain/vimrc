@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "6821b3ae27a57f1f3cf8ed030e4a55d70d0c4e43" },
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "d33cf7de14eea209b8ed4a7edaed72f0b8cedb30" },
+  "anyline.nvim": { "branch": "dev", "commit": "96a243cefddc2076621c6cea8f98f12bb438143d" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "0e6b2ed705ddcff9738ec4ea838141654f12eeef" },
   "cmp-nvim-lsp-document-symbol": { "branch": "main", "commit": "069a207be6a0327dcc62c957dbb38156b210733a" },
   "cmp-nvim-lsp-signature-help": { "branch": "main", "commit": "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1" },
