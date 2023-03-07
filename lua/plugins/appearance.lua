@@ -81,13 +81,6 @@ return {
   },
 
   {
-    'huy-hng/anyline.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VeryLazy',
-    config = true
-  },
-
-  {
     "rcarriga/nvim-notify",
     keys = {
       {
