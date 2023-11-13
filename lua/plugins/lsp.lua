@@ -190,42 +190,15 @@ return {
   },
 
   {
-    "simrat39/symbols-outline.nvim",
+    "hedyhli/outline.nvim",
 
     keys = {
-      { "<Leader>so", "<Cmd>SymbolsOutline<CR>", desc = "Symbol Outline" },
+      { "<Leader>so", "<Cmd>Outline<CR>", desc = "Symbol Outline" },
     },
 
     opts = {
       auto_close = true,
-      symbols = {
-        File          = { icon = "" },
-        Module        = { icon = "" },
-        Namespace     = { icon = "" },
-        Package       = { icon = "" },
-        Class         = { icon = "𝓒" },
-        Method        = { icon = "ƒ" },
-        Property      = { icon = "" },
-        Field         = { icon = "" },
-        Constructor   = { icon = "" },
-        Enum          = { icon = "ℰ" },
-        Interface     = { icon = "ﰮ" },
-        Function      = { icon = "ﬦ" },
-        Variable      = { icon = "" },
-        Constant      = { icon = "" },
-        String        = { icon = "𝓐" },
-        Number        = { icon = "#" },
-        Boolean       = { icon = "⊨" },
-        Array         = { icon = "" },
-        Object        = { icon = "⦿" },
-        Key           = { icon = "" },
-        Null          = { icon = "ﳠ" },
-        EnumMember    = { icon = "" },
-        Struct        = { icon = "𝓢" },
-        Event         = { icon = "" },
-        Operator      = { icon = "+" },
-        TypeParameter = { icon = "𝙏" }
-      }
+      auto_jump = true,
     },
   },
 }
