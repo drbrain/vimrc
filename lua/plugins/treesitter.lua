@@ -18,7 +18,6 @@ return {
       },
       ensure_installed = {
         "c",
-        "help",
         "json",
         "lua",
         "markdown",
