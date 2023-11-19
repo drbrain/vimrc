@@ -178,12 +178,18 @@ return {
     },
 
     opts = {
-      text = {
-        spinner = "moon",
+      progress = {
+        display = {
+          progress_icon = {
+            pattern = "moon",
+          }
+        },
       },
-      window = {
-        blend = 10,
-        border = "rounded",
+      notification = {
+        window = {
+          winblend = 10,
+          border = "rounded",
+        }
       }
     },
   },
