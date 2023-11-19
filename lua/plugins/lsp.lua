@@ -6,6 +6,20 @@ return {
       "BufNewFile",
       "BufReadPre",
     },
+
+    config = function()
+      local config = require("lspconfig.configs")
+      local util = require("lspconfig.util")
+
+      config.nu = {
+        default_config = {
+          name = "nu",
+          cmd = { "nu", "--lsp" },
+          filetypes = { "nu" },
+          root_dir = util.find_git_ancestor
+        }
+      }
+    end
   },
 
   {
@@ -94,6 +108,8 @@ return {
       lsp.nvim_workspace({
         library = vim.api.nvim_get_runtime_file('', true)
       })
+
+      lsp.configure('nu', { force_setup = true })
 
       lsp.setup()
 

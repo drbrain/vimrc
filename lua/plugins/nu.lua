@@ -6,14 +6,10 @@ return {
       "nvim-treesitter",
     },
 
-    event = {
-      "FileType nu",
-    },
-
     build = ":TSInstall nu",
 
     opts = {
-      complete_cmd_names = true,
+      use_lsp_features = false,
     },
   },
 }
