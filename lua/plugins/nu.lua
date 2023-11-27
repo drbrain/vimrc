@@ -2,7 +2,6 @@ return {
   {
     "LhKipp/nvim-nu",
     dependencies = {
-      "null-ls.nvim",
       "nvim-treesitter",
     },
 
