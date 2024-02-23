@@ -44,4 +44,18 @@ return {
       end
     },
   },
+
+  {
+    "https://git.sr.ht/~thatdarnpat/nvim-culprit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+
+    config = function()
+      local culprit = require("culprit")
+
+      culprit.setup()
+    end,
+  }
 }
