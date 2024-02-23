@@ -17,9 +17,6 @@ return {
 
   {
     "saecki/crates.nvim",
-    dependencies = {
-      "plenary.nvim",
-    },
 
     event = "BufRead Cargo.toml",
 
@@ -44,5 +41,9 @@ return {
       { "<Leader>CD", "<Cmd>lua require(\"crates\").open_documentation()<CR>", desc = "Open Crate Documentation" },
       { "<Leader>CC", "<Cmd>lua require(\"crates\").open_crates_io()<CR>", desc = "Open crates.io" },
     },
+
+    config = function()
+      require('crates').setup()
+    end
   },
 }
