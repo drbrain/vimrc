@@ -102,7 +102,7 @@ return {
       local lsp_zero = require("lsp-zero")
       lsp_zero.extend_lspconfig()
 
-      lsp_zero.on_attach(function(client, bufnr)
+      lsp_zero.on_attach(function(_, buffnr)
         local zero = require("lsp-zero")
 
         zero.default_keymaps({
@@ -128,10 +128,49 @@ return {
       })
 
       lsp_zero.set_sign_icons({
-        error = '',
-        warn = '',
-        hint = '',
-        info = ''
+        error = "",
+        warn = "",
+        hint = "",
+        info = "",
+      })
+
+      local cmp = require("cmp")
+      local cmp_action = lsp_zero.cmp_action()
+
+      cmp.setup({
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        formatting = {
+          details = true,
+          fields = { "abbr", "kind", "menu" },
+          format = require("lspkind").cmp_format({
+            mode = "symbol",
+            maxwidth = 80,
+            ellipsis_char = "…",
+          }),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<Tab>'] = cmp_action.luasnip_supertab(),
+          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+        }),
+        preselect = "item",
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end
+        },
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "nvim_lsp_signature_help" },
+          { name = "nvim_lsp_document_symbol" },
+          { name = "path" },
+          { name = "nvim_lua" },
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
       })
     end
   },
