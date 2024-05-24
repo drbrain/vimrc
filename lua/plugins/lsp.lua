@@ -32,7 +32,6 @@ return {
 
     opts = {
       ensure_installed = {
-        "rustfmt",
         "stylua",
       },
     },
@@ -58,7 +57,9 @@ return {
     opts = {
       handlers = {
         function(server_name)
-          require("lspconfig")[server_name].setup({})
+          if server_name ~= "rust_analyzer" then
+            require("lspconfig")[server_name].setup({})
+          end
         end
       }
     }
@@ -101,11 +102,15 @@ return {
       local lsp_zero = require("lsp-zero")
       lsp_zero.extend_lspconfig()
 
-      lsp_zero.on_attach(function(_, buffnr)
+      lsp_zero.on_attach(function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+          vim.lsp.inlay_hint.enable()
+        end
+
         local zero = require("lsp-zero")
 
         zero.default_keymaps({
-          buffer = buffnr,
+          buffer = bufnr,
           exclude = {
             "<F2>", -- Rename symbol
             "<F4>", -- Code action
@@ -122,7 +127,6 @@ return {
           timeout_ms = 5000,
         },
         servers = {
-          ["rust_analyzer"] = { "rust" },
         }
       })
 
@@ -215,7 +219,7 @@ return {
         enable = false,
       },
       symbol_in_winbar = {
-        enable = false,
+        enable = true,
       }
     },
   },
