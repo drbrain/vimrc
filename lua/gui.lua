@@ -1,5 +1,5 @@
 vim.g.guioptions = "aegir"
-vim.g.mousehide = true
+vim.g.mousehide = false
 vim.g.neovide_cursor_smooth_blink = false
 vim.g.neovide_cursor_trail_size = 0.4
 vim.g.neovide_cursor_vfx_mode = "railgun"
