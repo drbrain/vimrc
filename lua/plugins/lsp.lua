@@ -1,3 +1,63 @@
+local function mdbook_ls_setup(capabilities)
+  local lspconfig = require('lspconfig')
+
+  local function execute_command_with_params(params)
+    local clients = lspconfig.util.get_lsp_clients {
+      bufnr = vim.api.nvim_get_current_buf(),
+      name = 'mdbook_ls',
+    }
+
+    for _, client in ipairs(clients) do
+      client.request('workspace/executeCommand', params, nil, 0)
+    end
+  end
+
+  local function open_preview()
+    local params = {
+      command = 'open_preview',
+      arguments = { "127.0.0.1:33000", vim.api.nvim_buf_get_name(0) },
+    }
+
+    execute_command_with_params(params)
+  end
+
+  local function stop_preview()
+    local params = {
+      command = 'stop_preview',
+      arguments = {},
+    }
+
+    execute_command_with_params(params)
+  end
+
+  require('lspconfig.configs')['mdbook_ls'] = {
+    default_config = {
+      cmd = { 'mdbook-ls' },
+      filetypes = { 'markdown' },
+      root_dir = lspconfig.util.root_pattern('book.toml'),
+    },
+
+    commands = {
+      MDBookLSOpenPreview = {
+        open_preview,
+        description = 'Open mdBook-LS preview',
+      },
+      MDBookLSStopPreview = {
+        stop_preview,
+        description = 'Stop mdBook-LS preview',
+      },
+    },
+
+    docs = {
+      description = [[The mdBook Language Server for previewing mdBook projects live.]],
+    },
+  }
+
+  lspconfig['mdbook_ls'].setup {
+    capabilities = capabilities,
+  }
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -62,7 +122,16 @@ return {
           end
         end
       }
-    }
+    },
+
+    config = function(_, opts)
+      require('mason-lspconfig').setup(opts)
+
+      local capabilities = require('cmp_nvim_lsp')
+          .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+      mdbook_ls_setup(capabilities)
+    end
   },
 
   {
