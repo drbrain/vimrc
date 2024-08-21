@@ -10,7 +10,7 @@ vim.g.neovide_cursor_vfx_particle_phase = 5.0
 vim.g.neovide_cursor_vfx_particle_speed = 50.0
 vim.g.neovide_hide_mouse_when_typing = true
 vim.o.guicursor = "ci-cr-i-r:blinkwait500-blinkon500-blinkoff800"
-vim.o.guifont = "Monaspace Neon:h12"
+vim.o.guifont = "Monaspace Neon,Symbols Nerd Font Mono:h12"
 
 if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>')      -- Save
