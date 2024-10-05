@@ -13,6 +13,8 @@ vim.o.guicursor = "ci-cr-i-r:blinkwait500-blinkon500-blinkoff800"
 vim.o.guifont = "Monaspace Neon,Symbols Nerd Font Mono:h12"
 
 if vim.g.neovide then
+  vim.g.columns = 200
+
   vim.keymap.set('n', '<D-s>', ':w<CR>')      -- Save
   vim.keymap.set('v', '<D-c>', '"+y')         -- Copy
   vim.keymap.set('n', '<D-v>', '"+P')         -- Paste normal mode
