@@ -29,11 +29,11 @@ return {
     },
 
     keys = {
-      { "<Leader>a=", ":Tabularize /=<CR>",    mode = "n", desc = "Align on =" },
-      { "<Leader>a=", ":Tabularize /=<CR>",    mode = "v", desc = "Align on =" },
+      { "<Leader>a=", ":Tabularize /=<CR>",     mode = "n", desc = "Align on =" },
+      { "<Leader>a=", ":Tabularize /=<CR>",     mode = "v", desc = "Align on =" },
 
-      { "<Leader>ah", ":Tabularize /=><CR>",   mode = "n", desc = "Align on =>" },
-      { "<Leader>ah", ":Tabularize /=><CR>",   mode = "v", desc = "Align on =>" },
+      { "<Leader>ah", ":Tabularize /=><CR>",    mode = "n", desc = "Align on =>" },
+      { "<Leader>ah", ":Tabularize /=><CR>",    mode = "v", desc = "Align on =>" },
 
       { "<Leader>a:", ":Tabularize /:\\zs<CR>", mode = "n", desc = "Align after :" },
       { "<Leader>a:", ":Tabularize /:\\zs<CR>", mode = "v", desc = "Align after :" },
@@ -64,12 +64,12 @@ return {
     "kevinhwang91/nvim-hlslens",
 
     keys = {
-      { "n", [[<Cmd>execute("normal! " . v:count1 . "n")<CR>]], desc = "Repeat last search" },
-      { "N", [[<Cmd>execute("normal! " . v:count1 . "N")<CR>]], desc = "Repeat last search in the opposite direction" },
-      { "*", [[*]], desc = "Search forward for the cursor word" },
-      { "#", [[#]], desc = "Search backward for the cursor word" },
-      { "g*", [[g*]], desc = "Search forward for the cursor text" },
-      { "g#", [[g#]], desc = "Search backward for the cursor text" },
+      { "n",  [[<Cmd>execute("normal! " . v:count1 . "n")<CR>]], desc = "Repeat last search" },
+      { "N",  [[<Cmd>execute("normal! " . v:count1 . "N")<CR>]], desc = "Repeat last search in the opposite direction" },
+      { "*",  [[*]],                                             desc = "Search forward for the cursor word" },
+      { "#",  [[#]],                                             desc = "Search backward for the cursor word" },
+      { "g*", [[g*]],                                            desc = "Search forward for the cursor text" },
+      { "g#", [[g#]],                                            desc = "Search backward for the cursor text" },
     }
   },
 }
