@@ -1,5 +1,5 @@
 require("leader")
-require("plugins")
+require("config.lazy")
 require("behavior")
 require("gui")
 require("search")
