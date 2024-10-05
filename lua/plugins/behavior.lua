@@ -6,9 +6,9 @@ return {
       event = "VeryLazy",
 
       opts = {
-        window = {
+        win = {
           border = "single",
-          padding = { 0, 0, 0, 0 },
+          padding = { 0, 0 },
         },
       },
 
