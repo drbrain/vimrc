@@ -1,20 +1,18 @@
 return {
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
+    cmd = { "Trouble" },
 
     keys = {
-      { "<Leader>xx", "<Cmd>TroubleToggle<CR>", desc = "Toggle Diagnostics" },
-      { "<Leader>xw", "<Cmd>Trouble workspace_diagnostics<CR>", desc = "Workspace Diagnostics" },
-      { "<Leader>xd", "<Cmd>Trouble document_diagnostics<CR>", desc = "Document Diagnostics" },
-      { "<Leader>xl", "<Cmd>Trouble loclist<CR>", desc = "Location List" },
-      { "<Leader>xq", "<Cmd>Trouble quickfix<CR>", desc = "Quickfix List" },
-      { "<Leader>xL", "<Cmd>Trouble lsp_references<CR>", desc = "Reference List" },
+      { "<Leader>cl", "<Cmd>Trouble lsp toggle focus=false win.position=right<CR>", desc = "LSP Definitions / references / … (Trouble)" },
+      { "<Leader>cs", "<Cmd>Trouble symbols toggle focus=false<CR>", desc = "Symbols (Trouble)" },
+      { "<Leader>xL", "<Cmd>Trouble loclist toggle<CR>", desc = "Location List (trouble)" },
+      { "<Leader>xQ", "<Cmd>Trouble qflist toggle<CR>", desc = "Quickfix List (trouble)" },
+      { "<Leader>xX", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
+      { "<Leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", desc = "Toggle Diagnostics" },
     },
 
     opts = {
-      height = 6,
-      use_diagnostic_signs = true,
     },
   },
 }
