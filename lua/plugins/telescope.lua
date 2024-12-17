@@ -24,6 +24,7 @@ return {
       { "<Leader>fF",      Util.telescope("files", { cwd = false }),           desc = "Find Files (cwd)" },
       { "<Leader>fb",      "<Cmd>Telescope buffers<CR>",                       desc = "Buffers" },
       { "<Leader>fe",      "<Cmd>Telescope emoji<CR>",                         desc = "Find Emoji" },
+      { "<Leader>fg",      require("plugins.telescope.live_multigrep").setup,  desc = "Find Multigrep" },
       { "<Leader>ff",      Util.telescope("files"),                            desc = "Find Files (root dir)" },
       { "<Leader>fi",      Util.telescope("lsp_incoming_calls"),               desc = "Incoming Calls" },
       { "<Leader>fo",      Util.telescope("lsp_outgoing_calls"),               desc = "Outgoing Calls" },
@@ -82,6 +83,9 @@ return {
             max = 100,
             min = 75,
           },
+        },
+        extensions = {
+          fzf = {},
         },
         mappings = {
           i = {
