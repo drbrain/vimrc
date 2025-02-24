@@ -318,20 +318,33 @@ return {
   },
 
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    "rachartier/tiny-inline-diagnostic.nvim",
 
     event = {
-      "BufNewFile",
       "BufReadPre",
+      "LspAttach",
     },
+    priority = 2000,
 
-    config = function()
-      require("lsp_lines").setup({})
+    config = function(opts)
+      require("tiny-inline-diagnostic").setup(opts)
 
       vim.diagnostic.config({
-        virtual_text = false,
+        virtual_text = false
       })
     end,
+
+    opts = {
+      preset = "modern",
+      options = {
+        always_show = true,
+        multilines = {
+          enabled = true,
+        },
+        transparent_bg = true,
+        use_icons_from_diagnostic = true,
+      },
+    },
   },
 
   {
