@@ -1,20 +1,20 @@
 local function mdbook_ls_setup(capabilities)
-  local lspconfig = require('lspconfig')
+  local lspconfig = require("lspconfig")
 
   local function execute_command_with_params(params)
     local clients = lspconfig.util.get_lsp_clients {
       bufnr = vim.api.nvim_get_current_buf(),
-      name = 'mdbook_ls',
+      name = "mdbook_ls",
     }
 
     for _, client in ipairs(clients) do
-      client.request('workspace/executeCommand', params, nil, 0)
+      client.request("workspace/executeCommand", params, nil, 0)
     end
   end
 
   local function open_preview()
     local params = {
-      command = 'open_preview',
+      command = "open_preview",
       arguments = { "127.0.0.1:33000", vim.api.nvim_buf_get_name(0) },
     }
 
@@ -23,28 +23,28 @@ local function mdbook_ls_setup(capabilities)
 
   local function stop_preview()
     local params = {
-      command = 'stop_preview',
+      command = "stop_preview",
       arguments = {},
     }
 
     execute_command_with_params(params)
   end
 
-  require('lspconfig.configs')['mdbook_ls'] = {
+  require("lspconfig.configs")["mdbook_ls"] = {
     default_config = {
-      cmd = { 'mdbook-ls' },
-      filetypes = { 'markdown' },
-      root_dir = lspconfig.util.root_pattern('book.toml'),
+      cmd = { "mdbook-ls" },
+      filetypes = { "markdown" },
+      root_dir = lspconfig.util.root_pattern("book.toml"),
     },
 
     commands = {
       MDBookLSOpenPreview = {
         open_preview,
-        description = 'Open mdBook-LS preview',
+        description = "Open mdBook-LS preview",
       },
       MDBookLSStopPreview = {
         stop_preview,
-        description = 'Stop mdBook-LS preview',
+        description = "Stop mdBook-LS preview",
       },
     },
 
@@ -53,7 +53,7 @@ local function mdbook_ls_setup(capabilities)
     },
   }
 
-  lspconfig['mdbook_ls'].setup {
+  lspconfig["mdbook_ls"].setup {
     capabilities = capabilities,
   }
 end
