@@ -11,8 +11,5 @@ return {
       { "<Leader>xX", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" },
       { "<Leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", desc = "Toggle Diagnostics" },
     },
-
-    opts = {
-    },
   },
 }
