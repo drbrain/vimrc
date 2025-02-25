@@ -66,20 +66,6 @@ return {
       "BufNewFile",
       "BufReadPre",
     },
-
-    config = function()
-      local config = require("lspconfig.configs")
-      local util = require("lspconfig.util")
-
-      config.nu = {
-        default_config = {
-          name = "nu",
-          cmd = { "nu", "--lsp" },
-          filetypes = { "nu" },
-          root_dir = util.find_git_ancestor
-        }
-      }
-    end
   },
 
   {
@@ -257,6 +243,8 @@ return {
           documentation = cmp.config.window.bordered(),
         },
       })
+
+      require("lspconfig").nushell.setup({})
     end
   },
 
