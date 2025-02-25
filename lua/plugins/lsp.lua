@@ -117,7 +117,20 @@ return {
     opts = {
       handlers = {
         function(server_name)
-          if server_name ~= "rust_analyzer" then
+          if server_name == "rust_analyzer" then
+          elseif server_name == "dockerls" then
+            require("lspconfig")[server_name].setup({
+              settings = {
+                docker = {
+                  languageserver = {
+                    formatter = {
+                      ignoreMultilineInstructions = true,
+                    },
+                  },
+                }
+              }
+            })
+          else
             require("lspconfig")[server_name].setup({})
           end
         end
