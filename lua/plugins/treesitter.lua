@@ -84,7 +84,7 @@ return {
           floating_preview_opts = {},
           peek_definition_code = {
             ["<Leader>df"] = { query = "@function.outer", desc = "Show Surrounding Function" },
-            ["<Leader>dF"] = { query = "@class.outer",    desc = "Show Surrounding Class" },
+            ["<Leader>dF"] = { query = "@class.outer", desc = "Show Surrounding Class" },
           },
         },
 
@@ -93,24 +93,24 @@ return {
           set_jumps = true,
           goto_next_start = {
             ["]m"] = { query = "@function.outer", desc = "Next Function Start" },
-            ["]]"] = { query = "@class.outer",    desc = "Next Class Start" },
-            ["]o"] = { query = "@loop.*",         desc = "Next Loop" },
-            ["]s"] = { query = "@scope",          query_group = "locals", desc = "Next Scope" },
-            ["]z"] = { query = "@fold",           query_group = "folds",  desc = "Next Fold" },
+            ["]]"] = { query = "@class.outer", desc = "Next Class Start" },
+            ["]o"] = { query = "@loop.*", desc = "Next Loop" },
+            ["]s"] = { query = "@scope", query_group = "locals", desc = "Next Scope" },
+            ["]z"] = { query = "@fold", query_group = "folds", desc = "Next Fold" },
           },
           goto_next_end = {
             ["]M"] = { query = "@function.outer", desc = "Next Function End" },
-            ["]["] = { query = "@class.outer",    desc = "Next Class End" },
-            ["]O"] = { query = "@loop.*",         desc = "Next Loop" },
-            ["]S"] = { query = "@scope",          query_group = "locals", desc = "Next Scope" },
-            ["]Z"] = { query = "@fold",           query_group = "folds",  desc = "Next Fold" },
+            ["]["] = { query = "@class.outer", desc = "Next Class End" },
+            ["]O"] = { query = "@loop.*", desc = "Next Loop" },
+            ["]S"] = { query = "@scope", query_group = "locals", desc = "Next Scope" },
+            ["]Z"] = { query = "@fold", query_group = "folds", desc = "Next Fold" },
           },
           goto_previous_start = {
             ["[m"] = { query = "@function.outer", desc = "Prev Function Start" },
-            ["[["] = { query = "@class.outer",    desc = "Prev Class Start" },
+            ["[["] = { query = "@class.outer", desc = "Prev Class Start" },
             goto_previous_end = {
               ["[M"] = { query = "@function.outer", desc = "Prev Function End" },
-              ["[]"] = { query = "@class.outer",    desc = "Prev Class End" },
+              ["[]"] = { query = "@class.outer", desc = "Prev Class End" },
             },
             -- Below will go to either the start or the end, whichever is closer.
             -- Use if you want more granular movements
@@ -137,7 +137,7 @@ return {
             },
             selection_modes = {
               ["@parameter.outer"] = "v", -- charwise
-              ["@function.outer"] = "V", -- linewise
+              ["@function.outer"] = "V",  -- linewise
               ["@class.outer"] = "<c-v>", -- blockwise
             },
           },
