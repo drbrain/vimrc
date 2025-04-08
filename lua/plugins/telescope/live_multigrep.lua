@@ -1,14 +1,15 @@
 -- From: https://github.com/Integralist/nvim/blob/main/lua/custom/telescope/live_multigrep.lua
 --
 -- And from: https://www.youtube.com/watch?v=xdXE1tOT-qg
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local make_entry = require("telescope.make_entry")
-local conf = require("telescope.config").values
 
 local M = {}
 
 local live_multigrep = function(opts)
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local make_entry = require("telescope.make_entry")
+  local conf = require("telescope.config").values
+
   opts = opts or {}
   opts.cwd = opts.cwd or vim.uv.cwd()
 
