@@ -1,14 +1,15 @@
 vim.g.guioptions = "aegir"
 vim.g.mousehide = false
-vim.g.neovide_cursor_smooth_blink = false
+vim.g.neovide_cursor_smooth_blink = true
 vim.g.neovide_cursor_trail_size = 0.4
-vim.g.neovide_cursor_vfx_mode = "railgun"
-vim.g.neovide_cursor_vfx_particle_curl = 0.5
-vim.g.neovide_cursor_vfx_particle_density = 20.0
-vim.g.neovide_cursor_vfx_particle_lifetime = 2.0
-vim.g.neovide_cursor_vfx_particle_phase = 5.0
+vim.g.neovide_cursor_vfx_mode = { "wireframe", "railgun" }
+vim.g.neovide_cursor_vfx_particle_curl = 0.1
+vim.g.neovide_cursor_vfx_particle_density = 4.0
+vim.g.neovide_cursor_vfx_particle_lifetime = 1.0
+vim.g.neovide_cursor_vfx_particle_highlight_lifetime = 0.1
+vim.g.neovide_cursor_vfx_particle_phase = 2.5
 vim.g.neovide_cursor_vfx_particle_speed = 50.0
-vim.g.neovide_hide_mouse_when_typing = true
+vim.g.neovide_hide_mouse_when_typing = false
 vim.o.guicursor = "ci-cr-i-r:blinkwait500-blinkon500-blinkoff800"
 vim.o.guifont = "Monaspace Neon,Symbols Nerd Font Mono:h12"
 
