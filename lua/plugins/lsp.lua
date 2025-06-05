@@ -164,6 +164,9 @@ return {
     keys = {
       { "gr", "<Cmd>Telescope lsp_references<CR>",          desc = "Jump to references" },
       { "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Jump to Type Definition" },
+      { "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>",      desc = "Jump to definition" },
+      { "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>",     desc = "Jump to declaration" },
+      { "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>",  desc = "Jump to implementation" },
     },
 
     config = function()
