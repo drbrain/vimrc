@@ -1,11 +1,9 @@
 local function mdbook_ls_setup(capabilities)
-  local lspconfig = require("lspconfig")
-
   local function execute_command_with_params(params)
-    local clients = lspconfig.util.get_lsp_clients {
+    local clients = vim.lsp.util.get_lsp_clients({
       bufnr = vim.api.nvim_get_current_buf(),
       name = "mdbook_ls",
-    }
+    })
 
     for _, client in ipairs(clients) do
       client.request("workspace/executeCommand", params, nil, 0)
@@ -30,11 +28,11 @@ local function mdbook_ls_setup(capabilities)
     execute_command_with_params(params)
   end
 
-  require("lspconfig.configs")["mdbook_ls"] = {
+  vim.lsp.config("mdbook_ls", {
     default_config = {
       cmd = { "mdbook-ls" },
       filetypes = { "markdown" },
-      root_dir = lspconfig.util.root_pattern("book.toml"),
+      root_markers = { "book.toml" },
     },
 
     commands = {
@@ -51,11 +49,9 @@ local function mdbook_ls_setup(capabilities)
     docs = {
       description = [[The mdBook Language Server for previewing mdBook projects live.]],
     },
-  }
 
-  lspconfig["mdbook_ls"].setup {
     capabilities = capabilities,
-  }
+  })
 end
 
 return {
@@ -73,7 +69,7 @@ return {
 
     cmd = "Mason",
     keys = {
-      { "<Leader>cm", "<Cmd>Mason<CR>", desc = "Mason" }
+      { "<Leader>cm", "<Cmd>Mason<CR>", desc = "Mason" },
     },
 
     opts = {
@@ -105,7 +101,7 @@ return {
         function(server_name)
           if server_name == "rust_analyzer" then
           elseif server_name == "dockerls" then
-            require("lspconfig")[server_name].setup({
+            vim.lsp.config(server_name, {
               settings = {
                 docker = {
                   languageserver = {
@@ -113,24 +109,21 @@ return {
                       ignoreMultilineInstructions = true,
                     },
                   },
-                }
-              }
+                },
+              },
             })
-          else
-            require("lspconfig")[server_name].setup({})
           end
-        end
-      }
+        end,
+      },
     },
 
     config = function(_, opts)
-      require('mason-lspconfig').setup(opts)
+      require("mason-lspconfig").setup(opts)
 
-      local capabilities = require('cmp_nvim_lsp')
-          .default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
       mdbook_ls_setup(capabilities)
-    end
+    end,
   },
 
   {
@@ -162,11 +155,11 @@ return {
     },
 
     keys = {
-      { "gr", "<Cmd>Telescope lsp_references<CR>",          desc = "Jump to references" },
+      { "gr", "<Cmd>Telescope lsp_references<CR>", desc = "Jump to references" },
       { "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", desc = "Jump to Type Definition" },
-      { "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>",      desc = "Jump to definition" },
-      { "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>",     desc = "Jump to declaration" },
-      { "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>",  desc = "Jump to implementation" },
+      { "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", desc = "Jump to definition" },
+      { "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", desc = "Jump to declaration" },
+      { "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", desc = "Jump to implementation" },
     },
 
     config = function()
@@ -185,7 +178,7 @@ return {
           exclude = {
             "<F2>", -- Rename symbol
             "<F4>", -- Code action
-            "go",   -- Jump to type definition
+            "go", -- Jump to type definition
           },
         })
 
@@ -197,8 +190,7 @@ return {
           async = false,
           timeout_ms = 5000,
         },
-        servers = {
-        }
+        servers = {},
       })
 
       lsp_zero.set_sign_icons({
@@ -225,14 +217,14 @@ return {
           }),
         },
         mapping = cmp.mapping.preset.insert({
-          ['<Tab>'] = cmp_action.luasnip_supertab(),
-          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+          ["<Tab>"] = cmp_action.luasnip_supertab(),
+          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
         }),
         preselect = "item",
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
-          end
+          end,
         },
         sources = {
           { name = "nvim_lsp" },
@@ -246,9 +238,7 @@ return {
           documentation = cmp.config.window.bordered(),
         },
       })
-
-      require("lspconfig").nushell.setup({})
-    end
+    end,
   },
 
   {
@@ -260,10 +250,10 @@ return {
     },
 
     keys = {
-      { "<Leader>rn", "<Cmd>Lspsaga rename<CR>",         desc = "Rename Symbol" },
+      { "<Leader>rn", "<Cmd>Lspsaga rename<CR>", desc = "Rename Symbol" },
 
-      { "<Leader>ca", "<Cmd>Lspsaga code_action<CR>",    desc = "Code Action" },
-      { "<Leader>ca", "<Cmd>Lspsaga code_action<CR>",    mode = "v",             desc = "Code Action" },
+      { "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", desc = "Code Action" },
+      { "<Leader>ca", "<Cmd>Lspsaga code_action<CR>", mode = "v", desc = "Code Action" },
 
       { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", desc = "Incoming Calls" },
       { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", desc = "Outgoing Calls" },
@@ -293,7 +283,7 @@ return {
       },
       symbol_in_winbar = {
         enable = true,
-      }
+      },
     },
   },
 
@@ -309,15 +299,15 @@ return {
         display = {
           progress_icon = {
             pattern = "moon",
-          }
+          },
         },
       },
       notification = {
         window = {
           winblend = 10,
           border = "rounded",
-        }
-      }
+        },
+      },
     },
   },
 
@@ -334,7 +324,7 @@ return {
       require("tiny-inline-diagnostic").setup(opts)
 
       vim.diagnostic.config({
-        virtual_text = false
+        virtual_text = false,
       })
     end,
 
