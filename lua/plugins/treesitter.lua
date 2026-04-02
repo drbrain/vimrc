@@ -10,9 +10,8 @@ return {
       "BufNewFile",
     },
 
-    opts = {
-      auto_install = true,
-      ensure_installed = {
+    init = function()
+      local ensureInstalled = {
         "c",
         "json",
         "lua",
@@ -23,7 +22,19 @@ return {
         "rust",
         "vim",
         "yaml",
-      },
+      }
+      local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+      local parsersToInstall = vim
+        .iter(ensureInstalled)
+        :filter(function(parser)
+          return not vim.tbl_contains(alreadyInstalled, parser)
+        end)
+        :totable()
+      require("nvim-treesitter").install(parsersToInstall)
+    end,
+
+    opts = {
+      auto_install = true,
       highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
@@ -43,7 +54,7 @@ return {
     },
 
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter").setup(opts)
 
       vim.o.foldenable = true
       vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -120,7 +131,7 @@ return {
             },
             goto_previous = {
               ["[i"] = { query = "@conditional.outer", desc = "Prev Conditional" },
-            }
+            },
           },
 
           select = {
@@ -137,7 +148,7 @@ return {
             },
             selection_modes = {
               ["@parameter.outer"] = "v", -- charwise
-              ["@function.outer"] = "V",  -- linewise
+              ["@function.outer"] = "V", -- linewise
               ["@class.outer"] = "<c-v>", -- blockwise
             },
           },
@@ -146,7 +157,7 @@ return {
     },
 
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end
-  }
+      require("nvim-treesitter").setup(opts)
+    end,
+  },
 }
