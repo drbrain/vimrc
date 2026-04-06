@@ -29,11 +29,10 @@ local function mdbook_ls_setup(capabilities)
   end
 
   vim.lsp.config("mdbook_ls", {
-    default_config = {
-      cmd = { "mdbook-ls" },
-      filetypes = { "markdown" },
-      root_markers = { "book.toml" },
-    },
+    capabilities = capabilities,
+    cmd = { "mdbook-ls" },
+    filetypes = { "markdown" },
+    root_markers = { "book.toml" },
 
     commands = {
       MDBookLSOpenPreview = {
@@ -49,8 +48,6 @@ local function mdbook_ls_setup(capabilities)
     docs = {
       description = [[The mdBook Language Server for previewing mdBook projects live.]],
     },
-
-    capabilities = capabilities,
   })
 end
 
