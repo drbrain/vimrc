@@ -1,37 +1,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false,
-
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
 
     event = {
       "BufReadPost",
       "BufNewFile",
     },
-
-    init = function()
-      local ensureInstalled = {
-        "c",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "nu",
-        "regex",
-        "rust",
-        "vim",
-        "yaml",
-      }
-      local alreadyInstalled = require("nvim-treesitter.config").get_installed()
-      local parsersToInstall = vim
-        .iter(ensureInstalled)
-        :filter(function(parser)
-          return not vim.tbl_contains(alreadyInstalled, parser)
-        end)
-        :totable()
-      require("nvim-treesitter").install(parsersToInstall)
-    end,
 
     opts = {
       auto_install = true,
@@ -55,6 +32,18 @@ return {
 
     config = function(_, opts)
       require("nvim-treesitter").setup(opts)
+      require("nvim-treesitter").install({
+        "c",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "nu",
+        "regex",
+        "rust",
+        "vim",
+        "yaml",
+      })
 
       vim.o.foldenable = true
       vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -83,6 +72,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     dependencies = "nvim-treesitter",
 
     event = "VeryLazy",

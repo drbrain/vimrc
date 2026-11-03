@@ -80,3 +80,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Jump to top of git commit message"
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '<filetype>' },
+  callback = function() vim.treesitter.start() end,
+})
